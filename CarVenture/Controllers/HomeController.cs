@@ -1,4 +1,5 @@
-﻿using CarVenture.Models;
+﻿using CarVenture.Data;
+using CarVenture.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,7 +21,14 @@ namespace CarVenture.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new HomeViewModel()
+            {
+                Locations = DataStore.Locations,
+                Cars = DataStore.Cars,
+                Posts = DataStore.Posts,
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()

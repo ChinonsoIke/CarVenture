@@ -31,7 +31,7 @@ namespace CarVenture.Data
                 Name = "Toyota Corolla T-20",
                 RentPrice = 50000m,
                 Features = new string[] {"Air Conditioned", "Bluetooth Sound System", "Sunroof Available" },
-                ImagePath = "~images/Car\\ Image.png",
+                ImagePath = "/images/Car Image.png",
                 LocationId = Locations.First(x => x.Name == "Ikeja").Id,
                 Status = Status.Available
             },
@@ -39,7 +39,7 @@ namespace CarVenture.Data
                 Name = "Toyota Corolla T-25",
                 RentPrice = 60000m,
                 Features = new string[] {"Air Conditioned", "Bluetooth Sound System", "GPS System" },
-                ImagePath = "~images/Car\\ Image2.png",
+                ImagePath = "/images/Car Image2.png",
                 LocationId = Locations.First(x => x.Name == "Lekki").Id,
                 Status = Status.Available
             },
@@ -47,7 +47,7 @@ namespace CarVenture.Data
                 Name = "Toyota Corolla T-30",
                 RentPrice = 75000m,
                 Features = new string[] {"Air Conditioned", "Bluetooth Sound System", "Suicide Doors" },
-                ImagePath = "~images/Car\\ Image3.png",
+                ImagePath = "/images/Car Image3.png",
                 LocationId = Locations.First(x => x.Name == "Oshodi").Id,
                 Status = Status.Available
             },
@@ -78,20 +78,23 @@ namespace CarVenture.Data
             new Post()
             {
                 Title = "Caring is the new Marketing",
-                Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
-                Tag = Tags.First(x => x.Name == "affordable")
+                Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+                Tag = Tags.First(x => x.Name == "affordable"),
+                FeatureImagePath = "/images/Blog Image2.png"
             },
             new Post()
             {
                 Title = "We All Need Cars",
-                Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
-                Tag = Tags.First(x => x.Name == "safety")
+                Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+                Tag = Tags.First(x => x.Name == "safety"),
+                FeatureImagePath = "/images/Blog Image3.png"
             },
             new Post()
             {
                 Title = "Cars are Necessary for Cruise",
-                Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."
-                Tag = Tags.First(x => x.Name == "cruise")
+                Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+                Tag = Tags.First(x => x.Name == "cruise"),
+                FeatureImagePath = "/images/Blog Image.png"
             },
         };
     }
