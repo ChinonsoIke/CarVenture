@@ -23,6 +23,7 @@ namespace CarVenture.Controllers
         {
             var model = new HomeViewModel()
             {
+                // switch to services, repos, DTOs next week
                 Locations = DataStore.Locations,
                 Cars = DataStore.Cars,
                 Posts = DataStore.Posts,
