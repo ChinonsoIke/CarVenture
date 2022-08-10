@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarVenture", "CarVenture\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarVenture.Models", "CarVenture.Models\CarVenture.Models.csproj", "{0A58EA46-B21D-447F-9C2E-2D71132E3EEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarVenture.Data", "CarVenture.Data\CarVenture.Data.csproj", "{CA79C9A1-D352-4419-88CE-687C6DA9B11C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarVenture.Utilities", "CarVenture.Utilities\CarVenture.Utilities.csproj", "{05998A2E-7ECE-40BD-B624-43ED9E779DB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{0A58EA46-B21D-447F-9C2E-2D71132E3EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A58EA46-B21D-447F-9C2E-2D71132E3EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A58EA46-B21D-447F-9C2E-2D71132E3EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA79C9A1-D352-4419-88CE-687C6DA9B11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA79C9A1-D352-4419-88CE-687C6DA9B11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA79C9A1-D352-4419-88CE-687C6DA9B11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA79C9A1-D352-4419-88CE-687C6DA9B11C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05998A2E-7ECE-40BD-B624-43ED9E779DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05998A2E-7ECE-40BD-B624-43ED9E779DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05998A2E-7ECE-40BD-B624-43ED9E779DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05998A2E-7ECE-40BD-B624-43ED9E779DB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
