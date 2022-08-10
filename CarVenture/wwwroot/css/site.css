@@ -1,0 +1,425 @@
+﻿html {
+    font-family: Mulish, sans-serif;
+}
+
+nav {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: white;
+    height: 100vh;
+    width: 50%;
+    z-index: 5;
+}
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 8em;
+        text-decoration: none;
+    }
+
+        nav ul a {
+            color: black;
+            padding: 0.75em 2em;
+            display: block;
+            text-decoration: none;
+        }
+
+            nav ul a:hover {
+                background: rgb(235, 235, 235);
+            }
+
+    nav .close {
+        float: right;
+        margin: 2em;
+        width: 2.5em;
+    }
+
+.open-nav {
+    display: block;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-img {
+    position: absolute;
+    background: url("../images/Hero\ BG.png") center no-repeat fixed;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.527);
+    width: 100%;
+    height: 90vh;
+    z-index: -1;
+}
+
+section.hero {
+    margin-top: 0px;
+    position: relative;
+    height: 100vh;
+    color: white;
+}
+
+    section.hero .hero-content {
+        padding: 2em;
+    }
+
+    section.hero h1 {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+        margin-bottom: 0.5em;
+    }
+
+.booking-form {
+    color: black;
+    background-color: white;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+    .booking-form .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+        .booking-form .form-group label {
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+
+    .booking-form select {
+        box-sizing: border-box;
+        border: 2px solid #BBC8D4;
+        border-radius: 4px;
+        padding: 10px 0px 10px 0px;
+        background-color: white;
+    }
+
+.brands {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+
+.btn-primary {
+    padding: 0.8em;
+    background: #1F4590;
+    border-radius: 5px;
+    border-style: hidden;
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-subtext {
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 2em;
+    margin-bottom: 1.5em;
+    box-shadow: 1px 1px 10px 1px #888888;
+}
+
+.card2 {
+    display: none;
+}
+
+.card3 {
+    display: none;
+}
+
+.car-card .card-list {
+    margin-bottom: 20px;
+}
+
+.car-card .list-group {
+    display: flex;
+    align-items: center;
+}
+
+    .car-card .list-group p {
+        line-height: 0.2rem;
+    }
+
+    .car-card .list-group svg {
+        margin-right: 0.2em;
+    }
+
+.car-card .card-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .car-card .card-img img {
+        width: 70%;
+    }
+
+.testimonial {
+    background: #1F4590;
+    padding: 10px 10px 10px 10px;
+    color: white;
+}
+
+    .testimonial img {
+        display: none;
+    }
+
+    .testimonial p {
+        font-size: 1.8rem;
+        line-height: 3rem;
+    }
+
+.card-no-bg {
+    position: relative;
+}
+
+    .card-no-bg img {
+        width: 100%;
+    }
+
+    .card-no-bg .card-content {
+        padding: 0px 20px 0px 20px;
+    }
+
+    .card-no-bg .tag {
+        margin-top: 0px;
+        background-color: #1F4590;
+        display: inline;
+        padding: 3px 10px 3px 10px;
+        border-radius: 50px;
+        color: white;
+    }
+
+    .card-no-bg h3 {
+        font-size: 2rem;
+        margin-top: 2px;
+        font-weight: 600;
+        line-height: 2rem;
+        margin-bottom: 0px;
+    }
+
+    .card-no-bg .more {
+        display: flex;
+        align-items: center;
+    }
+
+        .card-no-bg .more h5 {
+            margin-right: 3px;
+        }
+
+.form2 {
+    background: #1F4590;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    color: white;
+}
+
+    .form2 .booking-form {
+        width: 80%;
+    }
+
+footer {
+    background: #ECEEF4;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+    footer p {
+        font-size: 0.7rem;
+    }
+
+    footer input {
+        padding: 10px;
+    }
+
+    footer .deals2 {
+        display: none;
+    }
+
+    footer .copyright {
+        padding: 30px 0px 30px 0px;
+    }
+
+@media only screen and (min-width: 960px) {
+    .container {
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+
+    header {
+        margin: 0px;
+    }
+
+        header nav {
+            display: block;
+            background: none;
+            position: relative;
+            height: 7vh;
+            width: 60%;
+        }
+
+            header nav ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 0;
+            }
+
+        header h3 {
+            margin: 0px;
+        }
+
+        header svg {
+            display: none;
+        }
+
+    section.hero {
+        margin-top: 1em;
+        align-items: flex-start;
+        margin-bottom: 7rem;
+    }
+
+        section.hero .hero-content {
+            padding-left: 8em;
+        }
+
+            section.hero .hero-content .hero-text {
+                font-weight: 800;
+                font-size: 4rem;
+                line-height: 4.5rem;
+                margin-bottom: 0;
+                width: 60%;
+            }
+
+            section.hero .hero-content .hero-subtext {
+                width: 40%;
+                line-height: 2rem;
+                font-size: 1.5rem;
+                font-weight: 200;
+            }
+
+        section.hero .booking-form {
+            box-shadow: 1px 1px 10px 1px #888888;
+            position: absolute;
+            bottom: 0;
+            width: 75vw;
+        }
+
+    .booking-form {
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 50rem;
+    }
+
+        .booking-form .form-group {
+            width: 15em;
+        }
+
+            .booking-form .form-group select {
+                width: 100%;
+            }
+
+        .booking-form button {
+            height: -webkit-min-content;
+            height: -moz-min-content;
+            height: min-content;
+        }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .section-subtext {
+        width: 50%;
+        text-align: center;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+        .cards .card {
+            width: 25%;
+        }
+
+        .cards .card1 {
+            display: block;
+        }
+
+        .cards .card2 {
+            display: block;
+        }
+
+        .cards .card3 {
+            display: block;
+        }
+
+    .diff .section-subtext {
+        margin-bottom: 3em;
+    }
+
+    .testimonial {
+        display: flex;
+        background: none;
+        justify-content: space-between;
+        gap: 2em;
+    }
+
+        .testimonial img {
+            display: block;
+        }
+
+        .testimonial .left {
+            background: #1F4590;
+            width: 100%;
+            padding: 3em;
+            border-radius: 4px;
+        }
+
+    .form2 {
+        margin-bottom: 3em;
+        border-radius: 5px;
+    }
+
+    footer {
+        padding: 3em;
+    }
+
+        footer .footer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+            footer .footer .deals {
+                display: none;
+            }
+
+            footer .footer .deals2 {
+                display: block;
+            }
+}
+/*# sourceMappingURL=carventure2.css.map */

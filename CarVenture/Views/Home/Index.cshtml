@@ -1,0 +1,268 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-content">
+        <h1 class="hero-text">Renting cars have never been this easy</h1>
+        <p class="hero-subtext">Amet minim mollit non deserunt ullamco est sit aliqua 
+            dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+                
+        <div class="booking-form">
+            <div class="form-group">
+                <label for="location">PICK-UP LOCATION</label>
+                <select name="location" class="form-select">
+                    <option value="">Select an option</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date1">PICK-UP DATE</label>
+                <select name="date1" class="form-select">
+                    <option value="">Select an option</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date2">RETURN DATE</label>
+                <select name="date2" class="form-select">
+                    <option value="">Select an option</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-primary">Search for cars</button>
+        </div>
+    </div>
+</section>
+
+<section class="brands">
+    <img src="~/images/1.png" alt="brand logo">
+    <img src="~/images/2.png" alt="brand logo">
+    <img src="~/images/3.png" alt="brand logo">
+    <img src="~/images/4.png" alt="brand logo">
+    <img src="~/images/5.png" alt="brand logo">
+</section>
+    
+<section class="featured">
+    <h1 class="section-title">Our Featured Cars</h1>
+                
+    <div class="cards">
+        <div class="card car-card card1">
+            <div class="card-img">
+                <img src="~/images/Car Image.png" alt="">
+            </div>
+            <h3>Toyota Corolla T-20</h3>
+            <div class="card-list">
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Air Conditioned</p>
+                </div>
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Bluetooth Sound System</p>
+                </div>
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Sunroof Available</p>
+                </div>
+            </div>
+        
+            <a href="#" class="btn-primary">Rent Now</a>
+        </div>
+
+        <div class="card car-card card2">
+            <div class="card-img">
+                <img src="~/images/Car Image.png" alt="">
+            </div>
+            <h3>Toyota Corolla T-20</h3>
+            <div class="card-list">
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Air Conditioned</p>
+                </div>
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Bluetooth Sound System</p>
+                </div>
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Sunroof Available</p>
+                </div>
+            </div>
+        
+            <a href="#" class="btn-primary">Rent Now</a>
+        </div>
+
+        <div class="card car-card card3">
+            <div class="card-img">
+                <img src="~/images/Car Image.png" alt="">
+            </div>
+            <h3>Toyota Corolla T-20</h3>
+            <div class="card-list">
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Air Conditioned</p>
+                </div>
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Bluetooth Sound System</p>
+                </div>
+                <div class="list-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                        </svg>
+                    <p>Sunroof Available</p>
+                </div>
+            </div>
+        
+            <a href="#" class="btn-primary">Rent Now</a>
+        </div>
+    </div>
+</section>
+    
+<section class="diff">
+    <h1 class="section-title">Why We Are Different</h1>
+    <p class="section-subtext">Amet minim mollit non deserunt ullamco est sit 
+        aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+                
+    <div class="cards">
+        <div class="card">
+            <svg width="101" height="135" viewBox="0 0 101 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.7308 9.08053C21.1866 6.53835 23.2812 4.42746 25.8038 2.96029C28.3264 1.49312 31.188 0.721433 34.1006 0.722902H71.4214C87.4555 0.722902 100.449 13.8165 100.449 29.9746V101.014C100.449 107.199 97.1146 112.604 92.1551 115.495V29.9746C92.1551 24.4331 89.9707 19.1187 86.0824 15.2003C82.194 11.2819 76.9203 9.08053 71.4214 9.08053H19.7308ZM0.926636 34.1534C0.926636 29.7202 2.67419 25.4687 5.78486 22.3339C8.89552 19.1992 13.1145 17.4382 17.5136 17.4382H67.2746C71.6738 17.4382 75.8927 19.1992 79.0034 22.3339C82.1141 25.4687 83.8616 29.7202 83.8616 34.1534V130.266C83.8616 131.022 83.6578 131.765 83.2721 132.413C82.8864 133.062 82.3332 133.593 81.6715 133.95C81.0098 134.307 80.2644 134.476 79.5147 134.44C78.7651 134.403 78.0393 134.162 77.4148 133.743L42.3941 110.213L7.37345 133.743C6.74896 134.162 6.0232 134.403 5.27356 134.44C4.52391 134.476 3.77849 134.307 3.11677 133.95C2.45505 133.593 1.90184 133.062 1.51614 132.413C1.13043 131.765 0.92669 131.022 0.926636 130.266V34.1534Z" fill="#1F4590"/>
+                </svg>                        
+            <h3>Easy Booking</h3>
+            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor 
+                do amet sint. Velit officia consequat duis enim velit mollit. </p>
+        </div>
+        <div class="card">
+            <svg width="115" height="136" viewBox="0 0 115 136" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M111.282 24.6168C102.077 22.1402 93.0843 18.9222 84.3906 14.9937C75.8375 11.2535 67.5808 6.85912 59.6928 1.84906L57.4586 0.456787L55.265 1.89001C47.377 6.90007 39.1203 11.2944 30.5672 15.0347C21.8592 18.9512 12.8528 22.1556 3.63523 24.6168L0.588623 25.3948V59.5464C0.588623 114.377 55.5494 134.893 56.0775 135.098L57.4586 135.589L58.8397 135.098C59.4084 135.098 114.329 114.418 114.329 59.5464V25.3948L111.282 24.6168ZM92.718 51.8479L47.3439 96.2777L21.6711 70.3569C20.5938 69.2709 19.9885 67.7979 19.9885 66.262C19.9885 64.7261 20.5938 63.2532 21.6711 62.1671C22.7485 61.0811 24.2097 60.471 25.7333 60.471C27.2569 60.471 28.7181 61.0811 29.7954 62.1671L47.4657 80.3076L84.7968 43.4534C85.3303 42.9156 85.9635 42.489 86.6605 42.198C87.3575 41.907 88.1045 41.7572 88.8589 41.7572C89.6133 41.7572 90.3604 41.907 91.0574 42.198C91.7543 42.489 92.3876 42.9156 92.9211 43.4534C93.4545 43.9911 93.8777 44.6295 94.1664 45.3321C94.4551 46.0347 94.6037 46.7878 94.6037 47.5483C94.6037 48.3088 94.4551 49.0618 94.1664 49.7644C93.8777 50.467 93.4545 51.1054 92.9211 51.6432L92.718 51.8479Z" fill="#1F4590"/>
+                </svg>                        
+            <h3>Secure Payments</h3>
+            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor 
+                do amet sint. Velit officia consequat duis enim velit mollit. </p>
+        </div>
+        <div class="card">
+            <svg width="104" height="142" viewBox="0 0 104 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M51.8251 0.44458C38.1938 0.443837 25.1132 6.30844 15.4261 16.7637C5.73901 27.219 0.228476 41.42 0.0921631 56.2802C0.0921631 94.9139 45.6818 137.919 47.6218 139.752C48.7931 140.844 50.2838 141.444 51.8251 141.444C53.3664 141.444 54.8571 140.844 56.0284 139.752C58.2917 137.919 103.558 94.9139 103.558 56.2802C103.422 41.42 97.9112 27.219 88.2241 16.7637C78.5371 6.30844 65.4564 0.443837 51.8251 0.44458ZM51.8251 77.994C47.3487 77.994 42.9728 76.5468 39.2508 73.8355C35.5288 71.1242 32.6278 67.2705 30.9148 62.7618C29.2017 58.2531 28.7535 53.2918 29.6268 48.5054C30.5001 43.7189 32.6557 39.3223 35.821 35.8714C38.9863 32.4206 43.0192 30.0706 47.4096 29.1185C51.8 28.1664 56.3508 28.655 60.4864 30.5226C64.6221 32.3902 68.1569 35.5528 70.6439 39.6106C73.1309 43.6683 74.4583 48.439 74.4583 53.3192C74.4583 59.8633 72.0737 66.1395 67.8292 70.7669C63.5846 75.3943 57.8278 77.994 51.8251 77.994Z" fill="#1F4590"/>
+                </svg>                        
+            <h3>24/7 Tracking</h3>
+            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor 
+                do amet sint. Velit officia consequat duis enim velit mollit. </p>
+        </div>
+    </div>
+</section>
+    
+<section class="testimonials">
+    <h1 class="section-title">What do people say about us?</h1>
+    <p class="section-subtext">Amet minim mollit non deserunt ullamco est sit 
+        aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+    
+    <div class="testimonial">
+        <img src="~/images/Testimonial Image.png" alt="Happy customer">
+        <div class="left">
+            <p>“Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+                Velit officia consequat duis enim velit mollit. Exercitation veniam 
+                consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco 
+                est sit aliqua dolor do amet sint. Velit officia consequat duis”</p>
+            <svg width="157" height="2" viewBox="0 0 157 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line y1="1.17334" x2="156.278" y2="1.17334" stroke="white"/>
+            </svg>                            
+            <h3>Anna De'Suza</h3>
+            <h3>CEO at SpaceX</h3>
+        </div>
+    </div>
+</section>
+    
+<section class="stories">
+    <h1 class="section-title">What do people say about us?</h1>
+    <div class="cards">
+        <div class="card-no-bg">
+            <img src="~/images/Blog Image.png" alt="Car parked on road">
+            <div class="card-content">
+                <p class="tag">Tag</p>
+                <h3>Caring is the new marketing</h3>
+                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do 
+                    amet sint. Velit officia consequat duis enim velit mollit.</p>
+                            
+                <div class="more">
+                    <h5>Find Out More</h5>
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.42582 8.67354H13.0612L7.9779 13.5535C7.57165 13.9435 7.57165 14.5835 7.9779 14.9735C8.38415 15.3635 9.0404 15.3635 9.44665 14.9735L16.3112 8.38354C16.7175 7.99354 16.7175 7.36354 16.3112 6.97354L9.45707 0.37354C9.26245 0.186288 8.99823 0.0810547 8.7227 0.0810547C8.44716 0.0810547 8.18294 0.186288 7.98832 0.37354C7.58207 0.76354 7.58207 1.39354 7.98832 1.78354L13.0612 6.67354H1.42582C0.852905 6.67354 0.384155 7.12354 0.384155 7.67354C0.384155 8.22354 0.852905 8.67354 1.42582 8.67354Z" fill="#6D7D8B"/>
+                        </svg>                                
+                </div>
+            </div>
+        </div>
+        <div class="card-no-bg card2">
+            <img src="~/images/Blog Image.png" alt="Car parked on road">
+            <div class="card-content">
+                <p class="tag">Tag</p>
+                <h3>Caring is the new marketing</h3>
+                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do 
+                    amet sint. Velit officia consequat duis enim velit mollit.</p>
+                            
+                <div class="more">
+                    <h5>Find Out More</h5>
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.42582 8.67354H13.0612L7.9779 13.5535C7.57165 13.9435 7.57165 14.5835 7.9779 14.9735C8.38415 15.3635 9.0404 15.3635 9.44665 14.9735L16.3112 8.38354C16.7175 7.99354 16.7175 7.36354 16.3112 6.97354L9.45707 0.37354C9.26245 0.186288 8.99823 0.0810547 8.7227 0.0810547C8.44716 0.0810547 8.18294 0.186288 7.98832 0.37354C7.58207 0.76354 7.58207 1.39354 7.98832 1.78354L13.0612 6.67354H1.42582C0.852905 6.67354 0.384155 7.12354 0.384155 7.67354C0.384155 8.22354 0.852905 8.67354 1.42582 8.67354Z" fill="#6D7D8B"/>
+                        </svg>                                
+                </div>
+            </div>
+        </div>
+        <div class="card-no-bg card3">
+            <img src="~/images/Blog Image.png" alt="Car parked on road">
+            <div class="card-content">
+                <p class="tag">Tag</p>
+                <h3>Caring is the new marketing</h3>
+                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do 
+                    amet sint. Velit officia consequat duis enim velit mollit.</p>
+                            
+                <div class="more">
+                    <h5>Find Out More</h5>
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.42582 8.67354H13.0612L7.9779 13.5535C7.57165 13.9435 7.57165 14.5835 7.9779 14.9735C8.38415 15.3635 9.0404 15.3635 9.44665 14.9735L16.3112 8.38354C16.7175 7.99354 16.7175 7.36354 16.3112 6.97354L9.45707 0.37354C9.26245 0.186288 8.99823 0.0810547 8.7227 0.0810547C8.44716 0.0810547 8.18294 0.186288 7.98832 0.37354C7.58207 0.76354 7.58207 1.39354 7.98832 1.78354L13.0612 6.67354H1.42582C0.852905 6.67354 0.384155 7.12354 0.384155 7.67354C0.384155 8.22354 0.852905 8.67354 1.42582 8.67354Z" fill="#6D7D8B"/>
+                        </svg>                                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<section class="form2">
+    <h1 class="section-title">Find Your Next Long Drive Now!</h1>
+    <div class="booking-form">
+        <div class="form-group">
+            <label for="location">PICK-UP LOCATION</label>
+            <select name="location" class="form-select">
+                <option value="">Select an option</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date1">PICK-UP DATE</label>
+            <select name="date1" class="form-select">
+                <option value="">Select an option</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date2">RETURN DATE</label>
+            <select name="date2" class="form-select">
+                <option value="">Select an option</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-primary">Search for cars</button>
+    </div>
+</section>
