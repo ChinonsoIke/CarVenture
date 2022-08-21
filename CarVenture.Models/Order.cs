@@ -9,6 +9,6 @@ namespace CarVenture.Models
         public string Id = Guid.NewGuid().ToString();
         public string CarId { get; set; }
         public DateTime CreatedAt = DateTime.Now;
-        public DateTime UpdatedAt { get; set; }
+        public DateTime UpdatedAt = DateTime.Now;
     }
 }

@@ -1,13 +1,18 @@
+using CarVenture.Core.Interfaces;
+using CarVenture.Core.Services;
+using CarVenture.Data.Interfaces;
+using CarVenture.Data.Repositories;
+using CarVenture.Utilities.Profiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace CarVenture
 {
@@ -16,6 +21,12 @@ namespace CarVenture
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            //Log.Logger = new LoggerConfiguration()
+            //    .WriteTo.File(new JsonFormatter(), Path.Combine(Environment.CurrentDirectory, "logs", "car_venture-important.json"), restrictedToMinimumLevel: LogEventLevel.Warning)
+            //    .WriteTo.File(Path.Combine(Environment.CurrentDirectory, "logs", "car_venture-.logs"), rollingInterval: RollingInterval.Day)
+            //    .MinimumLevel.Debug()
+            //    .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -25,6 +36,17 @@ namespace CarVenture
         {
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            services.AddAutoMapper(typeof(UserProfile));
+
+            services.AddSingleton<IAppService, AppService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICarRepository, CarRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ICarService, CarService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +66,7 @@ namespace CarVenture
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

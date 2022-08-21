@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarVenture.Dtos\CarVenture.Dtos.csproj" />
+    <ProjectReference Include="..\CarVenture.Models\CarVenture.Models.csproj" />
+  </ItemGroup>
+
 </Project>

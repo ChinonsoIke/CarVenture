@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpContextAccessor
+
+@if(httpContextAccessor.HttpContext.Session.GetString("UserID") != null)
+{
+    <li><a  class="btn-primary">Dashboard</a></li>
+}else
+{
+    <li><a asp-controller="Auth" asp-action="Register" class="btn-info">Sign Up</a></li>
+    <li><a asp-controller="Auth" asp-action="Login" class="btn-primary">Login</a></li>
+}
+

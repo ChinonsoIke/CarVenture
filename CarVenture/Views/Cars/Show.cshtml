@@ -1,0 +1,57 @@
+﻿@model CarVenture.Dtos.CarResponseDto
+
+@{
+    ViewData["Title"] = "Show";
+}
+
+<div class="row my-3">
+    <div class="card col-md-4 mr-md-2">
+        <img src="@Model.ImagePath" class="card-img"/>
+    </div>
+    <div class="card col-md-7">
+        <div>    
+            <dl class="row">
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Features)
+                </dt>
+                <dd class = "col-sm-10">
+                    <ul>
+                        @foreach(var feature in Model.Features)
+                        {
+                            <li>@feature</li>
+                        }
+                    </ul>
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.RentPrice)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.RentPrice)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.LocationId)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.LocationId)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+                <dt class = "col-sm-2 my-4">
+                    <a class="btn-primary text-white">Rent Now</a>
+                </dt>
+            </dl>
+        </div>
+    </div>
+</div>
+
+

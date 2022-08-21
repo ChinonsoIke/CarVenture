@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarVenture.Utilities
+namespace CarVenture.Models.Enums
 {
     public enum Status
     {

@@ -12,6 +12,6 @@ namespace CarVenture.Models
         public string FeatureImagePath { get; set; }
         public PostTag Tag { get; set; }
         public DateTime CreatedAt = DateTime.Now;
-        public DateTime UpdatedAt { get; set; }
+        public DateTime UpdatedAt = DateTime.Now;
     }
 }

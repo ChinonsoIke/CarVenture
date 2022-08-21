@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CarVenture.Utilities\CarVenture.Utilities.csproj" />
-  </ItemGroup>
-
 </Project>
