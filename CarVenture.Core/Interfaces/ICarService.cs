@@ -7,5 +7,6 @@ namespace CarVenture.Core.Interfaces
 {
     public interface ICarService : IService<CarRequestDto, CarResponseDto>
     {
+        public List<CarResponseDto> GetAll(string locationId);
     }
 }

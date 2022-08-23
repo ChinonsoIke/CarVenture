@@ -3,7 +3,10 @@
 
 @if(httpContextAccessor.HttpContext.Session.GetString("UserID") != null)
 {
-    <li><a  class="btn-primary">Dashboard</a></li>
+    <li><a asp-controller="Account" asp-action="Index" class="btn-primary mr-1">Dashboard</a></li>
+    <form method="post" asp-controller="Auth" asp-action="Logout">
+        <button type="submit" class="btn-info">Logout</button>
+    </form>
 }else
 {
     <li><a asp-controller="Auth" asp-action="Register" class="btn-info">Sign Up</a></li>

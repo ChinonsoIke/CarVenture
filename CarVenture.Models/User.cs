@@ -20,6 +20,7 @@ namespace CarVenture.Models
         public string PhoneNumber { get; set; }
 
         public string Password { get; set; }
+        public bool IsAdmin = false;
 
         public DateTime CreatedAt = DateTime.Now;
         public DateTime UpdatedAt = DateTime.Now;

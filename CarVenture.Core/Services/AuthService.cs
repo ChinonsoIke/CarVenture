@@ -38,7 +38,7 @@ namespace CarVenture.Core.Services
 
         public void Logout()
         {
-            throw new NotImplementedException();
+            _session.Clear();
         }
     }
 }

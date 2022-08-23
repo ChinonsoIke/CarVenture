@@ -4,7 +4,11 @@ using System.Text;
 
 namespace CarVenture.Dtos
 {
-    internal class PostRequestDto
+    public class PostRequestDto
     {
+        public string Title { get; set; }
+        public string Body { get; set; }
+        public string FeatureImagePath { get; set; }
+        public string Tag { get; set; }
     }
 }

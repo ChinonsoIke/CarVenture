@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CarVenture.Dtos
 {
-    internal class LocationRequestDto
+    public class LocationRequestDto
     {
+        public string Name { get; set; }
+        public string Address { get; set; }
     }
 }

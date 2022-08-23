@@ -4,9 +4,9 @@
     ViewData["Title"] = "Show";
 }
 
-<div class="row my-3">
+<div class="row my-3 justify-content-center">
     <div class="card col-md-4 mr-md-2">
-        <img src="@Model.ImagePath" class="card-img"/>
+        <img src="@Model.ImagePath" class="card-img" style="display: block; margin: auto;"/>
     </div>
     <div class="card col-md-7">
         <div>    
@@ -21,10 +21,15 @@
                     @Html.DisplayNameFor(model => model.Features)
                 </dt>
                 <dd class = "col-sm-10">
-                    <ul>
+                    <ul class="pl-0">
                         @foreach(var feature in Model.Features)
                         {
-                            <li>@feature</li>
+                            <li style="display: flex; align-items: center;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                                </svg>
+                                <p>@feature</p>
+                            </li>
                         }
                     </ul>
                 </dd>
@@ -35,10 +40,10 @@
                     @Html.DisplayFor(model => model.RentPrice)
                 </dd>
                 <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.LocationId)
+                    Location
                 </dt>
                 <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.LocationId)
+                    @Html.DisplayFor(model => model.Location.Name)
                 </dd>
                 <dt class = "col-sm-2">
                     @Html.DisplayNameFor(model => model.Status)
@@ -47,7 +52,7 @@
                     @Html.DisplayFor(model => model.Status)
                 </dd>
                 <dt class = "col-sm-2 my-4">
-                    <a class="btn-primary text-white">Rent Now</a>
+                    <a class="btn-primary-custom">Rent Now</a>
                 </dt>
             </dl>
         </div>

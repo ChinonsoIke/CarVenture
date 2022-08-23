@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CarVenture.Dtos
 {
-    internal class OrderRequestDto
+    public class OrderRequestDto
     {
+        public string CarId { get; set; }
+        public string UserId { get; set; }
     }
 }

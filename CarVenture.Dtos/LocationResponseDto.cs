@@ -4,7 +4,10 @@ using System.Text;
 
 namespace CarVenture.Dtos
 {
-    internal class LocationResponseDto
+    public class LocationResponseDto
     {
+        public string Id = Guid.NewGuid().ToString();
+        public string Name { get; set; }
+        public string Address { get; set; }
     }
 }

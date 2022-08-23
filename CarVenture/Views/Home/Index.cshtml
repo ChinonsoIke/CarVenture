@@ -9,34 +9,8 @@
         <h1 class="hero-text">Renting cars have never been this easy</h1>
         <p class="hero-subtext">Amet minim mollit non deserunt ullamco est sit aliqua 
             dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
-                
-        <form method="post" action="" class="booking-form">
-            <div class="form-group">
-                <label for="location">PICK-UP LOCATION</label>
-                <select name="location" class="form-select">
-                    <option value="">Select an option</option>
-                    @{
-                        foreach(var location in Model.Locations)
-                        {
-                                <option value="@location.Name">@location.Name</option>
-                        }
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="date1">PICK-UP DATE</label>
-                <select name="date1" class="form-select">
-                    <option value="">Select an option</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="date2">RETURN DATE</label>
-                <select name="date2" class="form-select">
-                    <option value="">Select an option</option>
-                </select>
-            </div>
-            <button type="submit" class="btn-primary">Search for cars</button>
-        </form>
+
+        @await Component.InvokeAsync("SearchComponent")
     </div>
 </section>
 
@@ -64,7 +38,7 @@
                         @{
                             foreach(var feature in car.Features)
                             {
-                                <div class="list-group">
+                                <div class="list-group-custom">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
                                         </svg>
@@ -74,7 +48,7 @@
                         }
                     </div>
         
-                    <a asp-controller="Cars" asp-action="Show" asp-route-id="@car.Id" class="btn-primary">Rent Now</a>
+                    <a asp-controller="Cars" asp-action="Show" asp-route-id="@car.Id" class="btn-primary-custom">Rent Now</a>
                 </div>
             }
         }
@@ -144,7 +118,7 @@
                 <div class="card-no-bg">
                     <img src="@post.FeatureImagePath" alt="Car parked on road">
                     <div class="card-content">
-                        <p class="tag">@post.Tag.Name</p>
+                        <p class="tag">@post.Tag</p>
                         <h3>@post.Title</h3>
                         <p>@post.Body.Substring(0, 150)</p>
                             
@@ -163,25 +137,5 @@
     
 <section class="form2">
     <h1 class="section-title">Find Your Next Long Drive Now!</h1>
-    <div class="booking-form">
-        <div class="form-group">
-            <label for="location">PICK-UP LOCATION</label>
-            <select name="location" class="form-select">
-                <option value="">Select an option</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="date1">PICK-UP DATE</label>
-            <select name="date1" class="form-select">
-                <option value="">Select an option</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="date2">RETURN DATE</label>
-            <select name="date2" class="form-select">
-                <option value="">Select an option</option>
-            </select>
-        </div>
-        <button type="submit" class="btn-primary">Search for cars</button>
-    </div>
+    @await Component.InvokeAsync("SearchComponent")
 </section>

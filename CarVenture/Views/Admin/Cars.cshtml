@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CarResponseDto>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Location</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int count = 0;
+
+                if(Model.Count() > 0)
+                {
+                    foreach(var car in Model)
+                    {
+                        <tr>
+                            <td>@{count++;} @count</td>
+                            <td>@car.Name</td>
+                            <td>@car.RentPrice</td>
+                            <td>@car.Location.Name</td>
+                            <td>@car.Status</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

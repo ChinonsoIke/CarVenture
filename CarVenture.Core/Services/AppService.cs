@@ -11,12 +11,12 @@ namespace CarVenture.Core.Services
     public class AppService : IAppService
     {
         private readonly ILogger<AppService> _logger;
+        public bool DBLoaded { get; set; }
 
         public AppService(ILogger<AppService> logger)
         {
             _logger = logger;
-        }
-        public bool DBLoaded { get; set; }
+        }        
 
         public async Task LoadDB()
         {

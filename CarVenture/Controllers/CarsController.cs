@@ -1,4 +1,5 @@
 ﻿using CarVenture.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -20,8 +21,8 @@ namespace CarVenture.Controllers
 
         public IActionResult Show(string id)
         {
-            var carRequestDto = _carService.Get(id);
-            return View(carRequestDto);
+            var carResponseDto = _carService.Get(id);
+            return View(carResponseDto);
         }
     }
 }

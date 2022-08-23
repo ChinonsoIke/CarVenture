@@ -1,0 +1,22 @@
+﻿@model IEnumerable<OrderResponseDto>
+
+<div class="row justify-content-between">
+    <div class="card bg-danger text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Total Orders</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model.Count()</h4>
+      </div>
+    </div>
+    <div class="card bg-primary text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Completed Orders</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model.Where(o => o.Status == CarVenture.Models.Enums.OrderStatus.Completed).Count()</h4>
+      </div>
+    </div>
+    <div class="card bg-success text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Orders In Processing</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model.Where(o => o.Status == CarVenture.Models.Enums.OrderStatus.Processing).Count()</h4>
+      </div>
+    </div>
+</div>

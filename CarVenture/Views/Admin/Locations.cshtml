@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LocationResponseDto>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int count = 0;
+
+                if(Model.Count() > 0)
+                {
+                    foreach(var location in Model)
+                    {
+                        <tr>
+                            <td>@{count++;} @count</td>
+                            <td>@location.Name</td>
+                            <td>@location.Address</td>
+                            <td>
+                                <a class="btn-primary" href="#">Edit</a>
+                                <a class="btn-danger" href="#">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

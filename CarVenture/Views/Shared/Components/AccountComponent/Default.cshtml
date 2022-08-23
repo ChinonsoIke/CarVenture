@@ -1,0 +1,13 @@
+﻿@model DashboardModel
+
+<nav class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0">
+    <a class="navbar-brand bg-dark col-sm-3 col-md-2 mr-0" href="/">CarVenture</a>
+    <h4 class="pl-3 w-100">Hello, @Model.User.FullName</h4>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <form class="nav-link" method="post" asp-controller="Auth" asp-action="Logout">
+                <button type="submit" class="btn-info">Sign Out</button>
+            </form>
+        </li>
+    </ul>
+</nav>

@@ -65,5 +65,13 @@ namespace CarVenture.Controllers
 
             return View(loginModel);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Logout()
+        {
+            _authService.Logout();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

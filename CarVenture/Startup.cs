@@ -40,13 +40,23 @@ namespace CarVenture
             services.AddDistributedMemoryCache();
             services.AddSession();
             services.AddAutoMapper(typeof(UserProfile));
+            services.AddAutoMapper(typeof(OrderProfile));
+            services.AddAutoMapper(typeof(PostProfile));
+            services.AddAutoMapper(typeof(LocationProfile));
+            services.AddAutoMapper(typeof(CarProfile));
 
             services.AddSingleton<IAppService, AppService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICarRepository, CarRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ICarService, CarService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPostService, PostService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +78,7 @@ namespace CarVenture
             app.UseRouting();
             app.UseSession();
 
+            //app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

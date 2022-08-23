@@ -1,0 +1,19 @@
+﻿@model SearchModel
+
+<form method="post" asp-controller="Search" asp-action="LocationSearch" class="booking-form">
+    <div class="form-group">
+        <label for="location">PICK-UP LOCATION</label>
+        <select asp-for="LocationId" asp-items="@Model.Locations" class="form-select">
+            
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="PickupDate">PICK-UP DATE</label>
+        <input asp-for="PickupDate" placeholder="DD/MM/YYYY"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="ReturnDate">RETURN DATE</label>
+        <input asp-for="ReturnDate" placeholder="DD/MM/YYYY"/>
+    </div>
+    <button type="submit" class="btn-primary">Search for cars</button>
+</form>

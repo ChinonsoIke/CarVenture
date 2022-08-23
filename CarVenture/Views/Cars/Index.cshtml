@@ -4,56 +4,60 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h2>Our Cars</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RentPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RentPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+@foreach(var car in Model){
+    <div class="row my-5 justify-content-center">
+        <div class="card col-md-4 mr-md-2">
+            <img src="@car.ImagePath" class="card-img" style="display: block; margin: auto;"/>
+        </div>
+        <div class="card col-md-7 p-3">
+            <dl class="row">
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(car => car.Name)
+                </dt>
+                <dd class = "col-sm-10">
+                    @car.Name
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(car => car.Features)
+                </dt>
+                <dd class = "col-sm-10">
+                    <ul class="pl-0">
+                        @foreach(var feature in car.Features)
+                        {
+                            <li style="display: flex; align-items: center;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                                </svg>
+                                <p>@feature</p>
+                            </li>
+                        }
+                    </ul>
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(car => car.RentPrice)
+                </dt>
+                <dd class = "col-sm-10">
+                    @car.RentPrice
+                </dd>
+                <dt class = "col-sm-2">
+                    Location
+                </dt>
+                <dd class = "col-sm-10">
+                    @car.Location.Name
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(car => car.Status)
+                </dt>
+                <dd class = "col-sm-10">
+                    @car.Status
+                </dd>
+            </dl>
+            <div>
+                <a asp-controller="Cars" asp-action="Show" asp-route-id="@car.Id" class="btn btn-info">View</a>
+                <a class="btn btn-primary text-white">Rent</a>
+            </div>
+        </div>
+    </div>
 }
-    </tbody>
-</table>

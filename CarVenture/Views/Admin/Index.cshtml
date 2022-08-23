@@ -1,0 +1,43 @@
+﻿@model Dictionary<string, int>
+
+<div class="row justify-content-between mb-md-3">
+    <div class="card bg-danger text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Total Orders</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model["totalOrders"]</h4>
+      </div>
+    </div>
+    <div class="card bg-primary text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Completed Orders</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model["completedOrders"]</h4>
+      </div>
+    </div>
+    <div class="card bg-success text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Cars</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model["totalCars"]</h4>
+      </div>
+    </div>
+</div>    
+
+<div class="row justify-content-between">
+    <div class="card bg-secondary text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Locations</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model["totalLocations"]</h4>
+      </div>
+    </div>
+    <div class="card bg-info text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Posts</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model["totalPosts"]</h4>
+      </div>
+    </div>
+    <div class="card bg-warning text-white col-md-3">
+      <div class="card-body">
+        <h5 class="card-title">Users</h5>
+        <h4 class="card-subtitle mb-2 text-white">@Model["totalUsers"]</h4>
+      </div>
+    </div>
+</div>

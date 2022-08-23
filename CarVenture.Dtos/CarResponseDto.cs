@@ -15,6 +15,7 @@ namespace CarVenture.Dtos
         public string[] Features { get; set; }
         public string ImagePath { get; set; }
         public string LocationId { get; set; }
+        public LocationResponseDto Location { get; set; }
         public Status Status { get; set; }
         public bool IsFeatured { get; set; }
     }

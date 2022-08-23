@@ -18,15 +18,18 @@ namespace CarVenture.Data
         {
             new Location()
             {
-                Name = "Lekki"
+                Name = "Lekki",
+                Address = "12 Pineapple Road, Lekki Phase 1"
             },
             new Location()
             {
-                Name = "Ikeja"
+                Name = "Ikeja",
+                Address = "16 Oshitelu Street, Ikeja GRA"
             },
             new Location()
             {
-                Name = "Oshodi"
+                Name = "Oshodi",
+                Address = "1 Noxx Avenue, Oshodi"
             },
         };
 
@@ -61,54 +64,32 @@ namespace CarVenture.Data
             },
         };
 
-        public static List<PostTag> Tags = new List<PostTag>
-        {
-            new PostTag()
-            {
-                Name = "safety"
-            },
-            new PostTag()
-            {
-                Name = "affordable"
-            },
-            new PostTag()
-            {
-                Name = "cruise"
-            },
-            new PostTag()
-            {
-                Name = "general"
-            },
-        };
-
         public static List<Post> Posts = new List<Post>
         {
             new Post()
             {
                 Title = "Caring is the new Marketing",
                 Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-                Tag = Tags.First(x => x.Name == "affordable"),
+                Tag = "affordable",
                 FeatureImagePath = "/images/Blog Image2.png"
             },
             new Post()
             {
                 Title = "We All Need Cars",
                 Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-                Tag = Tags.First(x => x.Name == "safety"),
+                Tag = "safety",
                 FeatureImagePath = "/images/Blog Image3.png"
             },
             new Post()
             {
                 Title = "Cars are Necessary for Cruise",
                 Body = "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-                Tag = Tags.First(x => x.Name == "cruise"),
+                Tag = "cruise",
                 FeatureImagePath = "/images/Blog Image.png"
             },
         };
 
         public static List<Order> Orders = new List<Order>();
-
-        public static List<OrderDetail> OrderDetails = new List<OrderDetail>();
 
         public static async Task LoadDatabaseAsync()
         {
@@ -118,7 +99,6 @@ namespace CarVenture.Data
                 //Cars = await ReadJsonAsync<Car>(carsFile) ?? Cars;
                 //Locations = await ReadJsonAsync<Location>(locationsFile) ?? Locations;
                 //Orders = await ReadJsonAsync<Order>(ordersFile) ?? Orders;
-                //OrderDetails = await ReadJsonAsync<OrderDetail>(orderDetailsFile) ?? OrderDetails;
                 //Posts = await ReadJsonAsync<Post>(postsFile) ?? Posts;
             }
             catch (Exception)
@@ -136,7 +116,6 @@ namespace CarVenture.Data
                 await WriteJsonAsync(Cars, carsFile);
                 await WriteJsonAsync(Locations, locationsFile);
                 await WriteJsonAsync(Orders, ordersFile);
-                await WriteJsonAsync(OrderDetails, orderDetailsFile);
                 await WriteJsonAsync(Posts, postsFile);
             }
             catch (Exception)

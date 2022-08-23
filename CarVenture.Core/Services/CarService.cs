@@ -6,6 +6,7 @@ using CarVenture.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,12 +16,14 @@ namespace CarVenture.Core.Services
     {
         private readonly IMapper _mapper;
         private readonly ICarRepository _repository;
-        private readonly ILogger<UserService> _logger;
+        private readonly ILocationService _locationService;
+        private readonly ILogger _logger;
 
-        public CarService(IMapper mapper, ICarRepository repository, ILogger<UserService> logger)
+        public CarService(IMapper mapper, ICarRepository repository, ILocationService locationService, ILogger<CarService> logger)
         {
             _mapper = mapper;
             _repository = repository;
+            _locationService = locationService;
             _logger = logger;
         }
         public async Task AddAsync(CarRequestDto carRequestDto)
@@ -62,13 +65,33 @@ namespace CarVenture.Core.Services
         public CarResponseDto Get(string id)
         {
             var car = _repository.Get(id);
-            return _mapper.Map<CarResponseDto>(car);
+            var carResponseDto = _mapper.Map<CarResponseDto>(car);
+            carResponseDto.Location = _locationService.Get(carResponseDto.LocationId);
+            return carResponseDto;
         }
 
         public List<CarResponseDto> GetAll()
         {
             var cars = _repository.GetAll();
-            return _mapper.Map<List<CarResponseDto>>(cars);
+            var carResponseDtos = _mapper.Map<List<CarResponseDto>>(cars);
+            foreach(var carResponseDto in carResponseDtos)
+            {
+                carResponseDto.Location = _locationService.Get(carResponseDto.LocationId);
+            }
+
+            return carResponseDtos;
+        }
+
+        public List<CarResponseDto> GetAll(string locationId)
+        {
+            var cars = _repository.GetAll().Where(c => c.LocationId == locationId);
+            var carResponseDtos = _mapper.Map<List<CarResponseDto>>(cars);
+            foreach (var carResponseDto in carResponseDtos)
+            {
+                carResponseDto.Location = _locationService.Get(carResponseDto.LocationId);
+            }
+
+            return carResponseDtos;
         }
 
         public async Task UpdateAsync(string id, CarRequestDto carRequestDto)

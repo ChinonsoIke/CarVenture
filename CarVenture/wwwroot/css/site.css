@@ -107,7 +107,7 @@ section.hero {
     flex-wrap: nowrap;
 }
 
-.btn-primary {
+.btn-primary-custom {
     padding: 0.8em;
     background: #1F4590;
     border-radius: 5px;
@@ -158,18 +158,23 @@ section {
     margin-bottom: 20px;
 }
 
-.car-card .list-group {
+.car-card .list-group-custom {
     display: flex;
     align-items: center;
 }
 
-    .car-card .list-group p {
+    .car-card .list-group-custom p {
         line-height: 0.2rem;
     }
 
-    .car-card .list-group svg {
+    .car-card .list-group-custom svg {
         margin-right: 0.2em;
     }
+
+.list-group-custom {
+    display: flex;
+    align-items: center;
+}
 
 .car-card .card-img {
     display: flex;

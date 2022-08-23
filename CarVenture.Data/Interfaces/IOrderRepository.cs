@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CarVenture.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CarVenture.Data.Interfaces
 {
-    internal class IOrderRepository
+    public interface IOrderRepository : IRepository<Order>
     {
     }
 }
