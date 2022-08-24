@@ -56,7 +56,7 @@
             </dl>
             <div>
                 <a asp-controller="Cars" asp-action="Show" asp-route-id="@car.Id" class="btn btn-info">View</a>
-                <a class="btn btn-primary text-white">Rent</a>
+                <a asp-controller="Orders" asp-action="Index" asp-route-id="@car.Id" class="btn-primary-custom">Rent Now</a>
             </div>
         </div>
     </div>

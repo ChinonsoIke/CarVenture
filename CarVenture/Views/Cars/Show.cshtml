@@ -52,7 +52,7 @@
                     @Html.DisplayFor(model => model.Status)
                 </dd>
                 <dt class = "col-sm-2 my-4">
-                    <a class="btn-primary-custom">Rent Now</a>
+                    <a asp-controller="Orders" asp-action="Index" asp-route-id="@Model.Id" class="btn-primary-custom">Rent Now</a>
                 </dt>
             </dl>
         </div>

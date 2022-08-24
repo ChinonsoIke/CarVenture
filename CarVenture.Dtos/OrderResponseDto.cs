@@ -12,6 +12,7 @@ namespace CarVenture.Dtos
         public CarResponseDto Car { get; set; }
         public OrderStatus Status { get; set; }
         public string UserId { get; set; }
+        public decimal PriceTotal { get; set; }
         public DateTime CreatedAt;
     }
 }

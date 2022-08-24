@@ -15,8 +15,11 @@ namespace CarVenture.Controllers
             _orderService = orderService;
             _session = httpContextAccessor.HttpContext.Session;
         }
+
         public IActionResult Index()
         {
+            if (_session.GetString("UserID") == null) return RedirectToAction("Login", "Auth");
+
             var userId = _session.GetString("UserID");
             var orders = _orderService.GetAllUserOrders(userId);
             return View(orders);
@@ -24,6 +27,8 @@ namespace CarVenture.Controllers
 
         public IActionResult OrderHistory()
         {
+            if (_session.GetString("UserID") == null) return RedirectToAction("Login", "Auth");
+
             var userId = _session.GetString("UserID");
             var orders = _orderService.GetAllUserOrders(userId);
             return View(orders);

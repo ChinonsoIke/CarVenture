@@ -1,0 +1,105 @@
+﻿@model OrderSummaryModel
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <h5 class="card-title">Car Details</h5>
+        <div class="row my-3 justify-content-center">
+            <div class="card col-md-4 mr-md-2">
+                <img src="@Model.Car.ImagePath" class="card-img" style="display: block; margin: auto;"/>
+            </div>
+            <div class="card col-md-7">
+                <div>
+                    <dl class="row">
+                        <dt class = "col-sm-5">
+                            Name
+                        </dt>
+                        <dd class = "col-sm-7">
+                            @Model.Car.Name
+                        </dd>
+                        <dt class = "col-sm-5">
+                            Features
+                        </dt>
+                        <dd class = "col-sm-7">
+                            <ul class="pl-0">
+                                @foreach(var feature in Model.Car.Features)
+                                {
+                                    <li style="display: flex; align-items: center;">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                                        </svg>
+                                        <p>@feature</p>
+                                    </li>
+                                }
+                            </ul>
+                        </dd>
+                        <dt class = "col-sm-5">
+                            Price
+                        </dt>
+                        <dd class = "col-sm-7">
+                            @Model.Car.RentPrice /Day
+                        </dd>
+                        <dt class = "col-sm-5">
+                            Location
+                        </dt>
+                        <dd class = "col-sm-7">
+                            @Model.Car.Location.Name
+                        </dd>
+                        <dt class = "col-sm-5">
+                            Status
+                        </dt>
+                        <dd class = "col-sm-7">
+                            @Model.Car.Status
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+        <h5 class="card-title">Renter Details</h5>
+        <div class="card px-3">
+            <dl class="row">
+                <dt class = "col-sm-5">
+                    Name
+                </dt>
+                <dd class = "col-sm-7">
+                    @Model.User.FullName
+                </dd>
+                <dt class = "col-sm-5">
+                    Email
+                </dt>
+                <dd class = "col-sm-7">
+                    @Model.User.Email
+                </dd>
+                <dt class = "col-sm-5">
+                    Phone
+                </dt>
+                <dd class = "col-sm-7">
+                    @Model.User.PhoneNumber
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="col-md-3 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Order Summary</h5>
+            <dl class="row">
+                <dt class = "col-sm-5">
+                    Total
+                </dt>
+                <dd class = "col-sm-7">
+                    @Model.OrderRequestDto.PriceTotal
+                </dd>
+            </dl>
+            <form method="post" asp-action="OrderConfirmation">
+                <input type="hidden" asp-for="OrderRequestDto.CarId" value="@Model.Car.Id" />
+                <input type="hidden" asp-for="OrderRequestDto.UserId" value="@Model.User.Id" />
+                <input type="hidden" asp-for="OrderRequestDto.PriceTotal" value="@Model.OrderRequestDto.PriceTotal" />
+                <input type="hidden" asp-for="OrderRequestDto.PickupDate" value="@Model.OrderRequestDto.PickupDate" />
+                <input type="hidden" asp-for="OrderRequestDto.ReturnDate" value="@Model.OrderRequestDto.ReturnDate" />
+                <button type="submit" class="btn btn-primary">Order</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>

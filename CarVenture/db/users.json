@@ -1,14 +1,1 @@
-[
-  {
-    "Id": "e42143ce-67ad-4737-885c-298d5b9198ad",
-    "IsAdmin": true,
-    "CreatedAt": "2022-08-23T21:19:00.6667729+01:00",
-    "UpdatedAt": "2022-08-23T21:19:00.6667933+01:00",
-    "FirstName": "Chinonso",
-    "LastName": "Ikewelugo",
-    "FullName": "Chinonso Ikewelugo",
-    "Email": "chinonsoikewelugo@gmail.com",
-    "PhoneNumber": "08165951631",
-    "Password": "$2a$11$EOUrdRp.OUH0sGqASuWchuiKNmX0vYeWY54z9UQBQAbHiTKXnXnVu"
-  }
-]
+[{"Id":"2c41d17c-b492-4e8f-b513-d471677b3582","IsAdmin":true,"CreatedAt":"2022-08-24T12:20:48.293244+01:00","UpdatedAt":"2022-08-24T12:20:48.2932578+01:00","FirstName":"Chinonso","LastName":"Ikewelugo","FullName":"Chinonso Ikewelugo","Email":"chinonsoikewelugo@gmail.com","PhoneNumber":"08165951631","Password":"$2a$11$pPr/m1JkN9O0GCULMjYbWeNAtVtG82EYlXz6b3vzSMrmHZq0NbAQq"}]

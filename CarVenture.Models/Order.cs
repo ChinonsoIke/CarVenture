@@ -10,6 +10,9 @@ namespace CarVenture.Models
         public string Id = Guid.NewGuid().ToString();
         public string CarId { get; set; }
         public string UserId { get; set; }
+        public decimal PriceTotal { get; set; }
+        public DateTime PickupDate { get; set; }
+        public DateTime ReturnDate { get; set; }
         public OrderStatus Status = OrderStatus.Processing;
         public DateTime CreatedAt = DateTime.Now;
         public DateTime UpdatedAt = DateTime.Now;

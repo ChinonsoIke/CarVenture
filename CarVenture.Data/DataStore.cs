@@ -95,11 +95,11 @@ namespace CarVenture.Data
         {
             try
             {
-                Users = await ReadJsonAsync<User>(usersFile) ?? Users;
-                //Cars = await ReadJsonAsync<Car>(carsFile) ?? Cars;
-                //Locations = await ReadJsonAsync<Location>(locationsFile) ?? Locations;
-                //Orders = await ReadJsonAsync<Order>(ordersFile) ?? Orders;
-                //Posts = await ReadJsonAsync<Post>(postsFile) ?? Posts;
+                if(File.Exists(usersFile)) Users = await ReadJsonAsync<User>(usersFile) ?? Users;
+                if (File.Exists(carsFile)) Cars = await ReadJsonAsync<Car>(carsFile) ?? Cars;
+                if (File.Exists(locationsFile)) Locations = await ReadJsonAsync<Location>(locationsFile) ?? Locations;
+                if (File.Exists(ordersFile)) Orders = await ReadJsonAsync<Order>(ordersFile) ?? Orders;
+                if (File.Exists(postsFile)) Posts = await ReadJsonAsync<Post>(postsFile) ?? Posts;
             }
             catch (Exception)
             {
