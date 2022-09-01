@@ -8,6 +8,7 @@
                 <th>Car ID</th>
                 <th>User ID</th>
                 <th>Created</th>
+                <th>Price Total</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -24,6 +25,10 @@
                             <td>@order.CarId</td>
                             <td>@order.UserId</td>
                             <td>@order.CreatedAt</td>
+                            <td>
+                                @{var rentPrice = $"{order.PriceTotal:C} /Day";}
+                                @rentPrice
+                            </td>
                             <td>@order.Status</td>
                         </tr>
                     }

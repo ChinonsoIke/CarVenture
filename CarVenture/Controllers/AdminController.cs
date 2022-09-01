@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,6 +26,7 @@ namespace CarVenture.Controllers
             _orderService = orderService;
             _postService = postService;
             _userService = userService;
+            CultureInfo.CurrentCulture = new CultureInfo("en-NG", false);
         }
 
         public async Task<IActionResult> Index()
@@ -68,7 +70,7 @@ namespace CarVenture.Controllers
             if (_session.GetString("UserID") == null || !(await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin)
                 return RedirectToAction("Login", "Auth");
 
-            var orders = _orderService.GetAllAsync();
+            var orders = await _orderService.GetAllAsync();
             return View(orders);
         }
 
@@ -77,7 +79,7 @@ namespace CarVenture.Controllers
             if (_session.GetString("UserID") == null || !(await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin)
                 return RedirectToAction("Login", "Auth");
 
-            var posts = _postService.GetAllAsync();
+            var posts = await _postService.GetAllAsync();
             return View(posts);
         }
 
@@ -86,7 +88,7 @@ namespace CarVenture.Controllers
             if (_session.GetString("UserID") == null || !(await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin)
                 return RedirectToAction("Login", "Auth");
 
-            var users = _userService.GetAllAsync();
+            var users = await _userService.GetAllAsync();
             return View(users);
         }
     }

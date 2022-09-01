@@ -2,6 +2,7 @@
 using CarVenture.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
@@ -15,6 +16,7 @@ namespace CarVenture.Controllers
         {
             _orderService = orderService;
             _session = httpContextAccessor.HttpContext.Session;
+            CultureInfo.CurrentCulture = new CultureInfo("en-NG", false);
         }
 
         public async Task<IActionResult> Index()

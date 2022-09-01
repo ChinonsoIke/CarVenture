@@ -1,6 +1,7 @@
 ﻿using CarVenture.Core.Interfaces;
 using CarVenture.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
@@ -12,6 +13,7 @@ namespace CarVenture.Controllers
         public SearchController(ICarService carService)
         {
             _carService = carService;
+            CultureInfo.CurrentCulture = new CultureInfo("en-NG", false);
         }
 
         [HttpPost]

@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
@@ -24,13 +26,14 @@ namespace CarVenture.Controllers
             _carService = carService;
             _locationService = locationService;
             _postService = postService;
+            CultureInfo.CurrentCulture = new CultureInfo("en-NG", false);
         }
 
         public async Task<IActionResult> Index()
         {            
             var data = new HomeViewModel()
             {
-                Cars = await _carService.GetAllAsync(),
+                Cars = (await _carService.GetAllAsync()).Where(c => c.IsFeatured).Take(3).ToList(),
                 Locations = await _locationService.GetAllAsync(),
                 Posts = await _postService.GetAllAsync(),
             };

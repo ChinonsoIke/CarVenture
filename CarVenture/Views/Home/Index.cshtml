@@ -27,30 +27,34 @@
                 
     <div class="cards">
         @{
-            foreach(var car in Model.Cars.Take(3))
+            foreach(var car in Model.Cars)
             {
-                <div class="card-custom car-card card1">
-                    <div class="card-img">
-                        <img src="@car.ImagePath" alt="">
-                    </div>
-                    <h3>@car.Name</h3>
-                    <div class="card-list">
-                        @{
+                    <div class="card-custom car-card card1">
+                        <div class="card-img">
+                            <img src="@car.ImagePath" alt="">
+                        </div>
+                        <h3>@car.Name</h3>
+                        <div class="card-list">
+                            @{
                             var features = car.Features.Split(',');
                             foreach(var feature in features)
                             {
-                                <div class="list-group-custom">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
-                                        </svg>
-                                    <p>@feature</p>
+                                        <div class="list-group-custom">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.287231 12.0571C0.287231 5.74432 5.41064 0.620911 11.7234 0.620911C18.0362 0.620911 23.1596 5.74432 23.1596 12.0571C23.1596 18.3699 18.0362 23.4933 11.7234 23.4933C5.41064 23.4933 0.287231 18.3699 0.287231 12.0571ZM4.5186 12.8576L8.62418 16.9632C9.0702 17.4092 9.80211 17.4092 10.2367 16.9632L18.9167 8.28318C19.3627 7.83717 19.3627 7.11669 18.9167 6.67068C18.4707 6.22467 17.7502 6.22467 17.3042 6.67068L9.43615 14.5388L6.1311 11.2451C5.68509 10.7991 4.96461 10.7991 4.5186 11.2451C4.30445 11.4588 4.18411 11.7489 4.18411 12.0514C4.18411 12.3539 4.30445 12.644 4.5186 12.8576Z" fill="#00C04D"/>
+                                                </svg>
+                                            <p>@feature</p>
                                 </div>
                             }
                         }
                     </div>
-        
-                    <a asp-controller="Orders" asp-action="Index" asp-route-id="@car.Id" class="btn-primary-custom">Rent Now</a>
-                </div>
+                                    
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom:1rem;">
+                            @{var rentPrice = $"{car.RentPrice:C} /Day";}
+                            <p style="margin-bottom: 0px;">@rentPrice</p>
+                            <a asp-controller="Orders" asp-action="Index" asp-route-id="@car.Id" class="btn-primary-custom">Rent Now</a>
+                        </div>
+                    </div>
             }
         }
     </div>
@@ -116,21 +120,21 @@
         @{
             foreach(var post in Model.Posts)
             {
-                <div class="card-no-bg">
-                    <img src="@post.FeatureImagePath" alt="Car parked on road">
-                    <div class="card-content">
-                        <p class="tag">@post.Tag</p>
-                        <h3>@post.Title</h3>
-                        <p>@post.Body.Substring(0, 150)</p>
-                            
-                        <a href="#" class="more">
-                            <h5>Find Out More</h5>
-                            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.42582 8.67354H13.0612L7.9779 13.5535C7.57165 13.9435 7.57165 14.5835 7.9779 14.9735C8.38415 15.3635 9.0404 15.3635 9.44665 14.9735L16.3112 8.38354C16.7175 7.99354 16.7175 7.36354 16.3112 6.97354L9.45707 0.37354C9.26245 0.186288 8.99823 0.0810547 8.7227 0.0810547C8.44716 0.0810547 8.18294 0.186288 7.98832 0.37354C7.58207 0.76354 7.58207 1.39354 7.98832 1.78354L13.0612 6.67354H1.42582C0.852905 6.67354 0.384155 7.12354 0.384155 7.67354C0.384155 8.22354 0.852905 8.67354 1.42582 8.67354Z" fill="#6D7D8B"/>
-                                </svg>                                
-                        </a>
-                    </div>
-                </div>
+                                <div class="card-no-bg">
+                                    <img src="@post.FeatureImagePath" alt="Car parked on road">
+                                    <div class="card-content">
+                                        <p class="tag">@post.Tag</p>
+                                        <h3>@post.Title</h3>
+                                        <p>@post.Body.Substring(0, 150)</p>
+                                            
+                                        <a href="#" class="more">
+                                            <h5>Find Out More</h5>
+                                            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.42582 8.67354H13.0612L7.9779 13.5535C7.57165 13.9435 7.57165 14.5835 7.9779 14.9735C8.38415 15.3635 9.0404 15.3635 9.44665 14.9735L16.3112 8.38354C16.7175 7.99354 16.7175 7.36354 16.3112 6.97354L9.45707 0.37354C9.26245 0.186288 8.99823 0.0810547 8.7227 0.0810547C8.44716 0.0810547 8.18294 0.186288 7.98832 0.37354C7.58207 0.76354 7.58207 1.39354 7.98832 1.78354L13.0612 6.67354H1.42582C0.852905 6.67354 0.384155 7.12354 0.384155 7.67354C0.384155 8.22354 0.852905 8.67354 1.42582 8.67354Z" fill="#6D7D8B"/>
+                                                </svg>                                
+                                        </a>
+                                    </div>
+                                </div>
             }
         }
     </div>

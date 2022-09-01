@@ -7,6 +7,7 @@ using Serilog.Events;
 using Serilog.Formatting.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace CarVenture
     public class Program
     {
         public static void Main(string[] args)
-        {
+        {   
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.File(Path.Combine(Environment.CurrentDirectory, "logs", "car_venture-important.log"), restrictedToMinimumLevel: LogEventLevel.Warning)
                 .WriteTo.File(Path.Combine(Environment.CurrentDirectory, "logs", "car_venture-.logs"), rollingInterval: RollingInterval.Day)

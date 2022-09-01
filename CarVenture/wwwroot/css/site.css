@@ -161,10 +161,12 @@ section {
 .car-card .list-group-custom {
     display: flex;
     align-items: center;
+    margin-bottom: 3px;
 }
 
     .car-card .list-group-custom p {
-        line-height: 0.2rem;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 
     .car-card .list-group-custom svg {
@@ -180,10 +182,15 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 50%;
+    width: auto;
+    margin-bottom: 1rem;
 }
 
     .car-card .card-img img {
-        width: 70%;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
     }
 
 .testimonial {

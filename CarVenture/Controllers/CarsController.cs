@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
@@ -13,6 +14,7 @@ namespace CarVenture.Controllers
         public CarsController(ICarService carService)
         {
             _carService = carService;
+            CultureInfo.CurrentCulture = new CultureInfo("en-NG", false);
         }
         public async Task<IActionResult> Index()
         {

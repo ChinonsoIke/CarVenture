@@ -22,7 +22,10 @@
                         <tr>
                             <td>@{count++;} @count</td>
                             <td>@car.Name</td>
-                            <td>@car.RentPrice</td>
+                            <td>
+                                @{var rentPrice = $"{car.RentPrice:C} /Day";}
+                                @rentPrice
+                            </td>
                             <td>@car.Location.Name</td>
                             <td>@car.Status</td>
                         </tr>
