@@ -50,11 +50,11 @@ namespace CarVenture.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginModel loginModel)
+        public async Task<IActionResult> Login(LoginModel loginModel)
         {
             if (ModelState.IsValid)
             {
-                if(!_authService.Login(loginModel.Email, loginModel.Password))
+                if(!await _authService.Login(loginModel.Email, loginModel.Password))
                 {
                     ModelState.AddModelError("", "These credentials do not match our records");
                     return View(loginModel);

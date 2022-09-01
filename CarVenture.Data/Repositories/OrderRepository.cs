@@ -1,22 +1,47 @@
 ﻿using CarVenture.Data.Interfaces;
 using CarVenture.Models;
+using CarVenture.Models.Enums;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
-using static CarVenture.Helpers.FileOperations;
-
 namespace CarVenture.Data.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
-        public async Task AddAsync(Order order)
+        private readonly IConfiguration _configuration;
+        private readonly string _connString;
+
+        public OrderRepository(IConfiguration configuration)
         {
-            DataStore.Orders.Add(order);
+            _configuration = configuration;
+            _connString = _configuration.GetConnectionString("DefaultConnection");
+        }
+
+        public async Task<int> AddAsync(Order order)
+        {
             try
             {
-                await WriteJsonAsync(DataStore.Orders, ordersFile);
+                using (SqlConnection conn = new SqlConnection(_connString))
+                {
+                    SqlCommand cmd = new SqlCommand("spAddOrder", conn) { CommandType = CommandType.StoredProcedure };
+
+                    // Add command parameters
+                    cmd.Parameters.AddWithValue("@Id", order.Id);
+                    cmd.Parameters.AddWithValue("@CarId", order.CarId);
+                    cmd.Parameters.AddWithValue("@UserId", order.UserId);
+                    cmd.Parameters.AddWithValue("@PriceTotal", order.PriceTotal);
+                    cmd.Parameters.AddWithValue("@PickupDate", order.PickupDate);
+                    cmd.Parameters.AddWithValue("@ReturnDate", order.ReturnDate);
+                    cmd.Parameters.AddWithValue("@Status", order.Status);
+                    cmd.Parameters.AddWithValue("@CreatedAt", order.CreatedAt);
+                    cmd.Parameters.AddWithValue("@UpdatedAt", order.UpdatedAt);
+
+                    conn.Open();
+                    return await cmd.ExecuteNonQueryAsync();
+                }
             }
             catch (Exception)
             {
@@ -24,12 +49,18 @@ namespace CarVenture.Data.Repositories
             }
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task<int> DeleteAsync(string id)
         {
-            DataStore.Orders.RemoveAll(o => o.Id == id);
             try
             {
-                await WriteJsonAsync(DataStore.Orders, ordersFile);
+                using (var conn = new SqlConnection(_connString))
+                {
+                    var cmd = new SqlCommand("spDeleteCar", conn) { CommandType = CommandType.StoredProcedure };
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    conn.Open();
+                    return await cmd.ExecuteNonQueryAsync();
+                }
             }
             catch (Exception)
             {
@@ -37,24 +68,101 @@ namespace CarVenture.Data.Repositories
             }
         }
 
-        public Order Get(string id)
-        {
-            return DataStore.Orders.FirstOrDefault(o => o.Id == id);
-        }
-
-        public List<Order> GetAll()
-        {
-            return DataStore.Orders;
-        }
-
-        public async Task UpdateAsync(Order order)
+        public async Task<Order> GetAsync(string id)
         {
             try
             {
-                var index = DataStore.Orders.IndexOf(DataStore.Orders.First(o => o.Id == order.Id));
-                DataStore.Orders[index] = order;
+                using (var conn = new SqlConnection(_connString))
+                {
+                    var cmd = new SqlCommand("spGetOrderById", conn) { CommandType = CommandType.StoredProcedure };
+                    cmd.Parameters.AddWithValue("Id", id);
 
-                await WriteJsonAsync(DataStore.Orders, ordersFile);
+                    conn.Open();
+                    SqlDataReader reader = await cmd.ExecuteReaderAsync();
+
+                    var order = new Order();
+
+                    while (reader.Read())
+                    {
+                        order.Id = reader["Id"].ToString();
+                        order.CarId = reader["CarId"].ToString();
+                        order.UserId = reader["UserId"].ToString();
+                        order.PriceTotal = (decimal)reader["PriceTotal"];
+                        order.Status = (OrderStatus)reader["Status"];
+                        order.PickupDate = (DateTime)reader["PickupDate"];
+                        order.ReturnDate = (DateTime)reader["ReturnDate"];
+                        order.CreatedAt = (DateTime)reader["CreatedAt"];
+                        order.UpdatedAt = (DateTime)reader["UpdatedAt"];
+                    }
+
+                    return order;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<List<Order>> GetAllAsync()
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    var cmd = new SqlCommand("spGetAllOrders", conn) { CommandType = CommandType.StoredProcedure };
+
+                    conn.Open();
+                    SqlDataReader reader = await cmd.ExecuteReaderAsync();
+
+                    var orders = new List<Order>();
+
+                    while (reader.Read())
+                    {
+                        var order = new Order();
+                        order.Id = reader["Id"].ToString();
+                        order.CarId = reader["CarId"].ToString();
+                        order.UserId = reader["UserId"].ToString();
+                        order.PriceTotal = (decimal)reader["PriceTotal"];
+                        order.Status = (OrderStatus)reader["Status"];
+                        order.PickupDate = (DateTime)reader["PickupDate"];
+                        order.ReturnDate = (DateTime)reader["ReturnDate"];
+                        order.CreatedAt = (DateTime)reader["CreatedAt"];
+                        order.UpdatedAt = (DateTime)reader["UpdatedAt"];
+
+                        orders.Add(order);
+                    }
+
+                    return orders;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<int> UpdateAsync(Order order)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connString))
+                {
+                    SqlCommand cmd = new SqlCommand("spUpdateOrder", conn) { CommandType = CommandType.StoredProcedure };
+
+                    // Add command parameters
+                    cmd.Parameters.AddWithValue("@Id", order.Id);
+                    cmd.Parameters.AddWithValue("@CarId", order.CarId);
+                    cmd.Parameters.AddWithValue("@UserId", order.UserId);
+                    cmd.Parameters.AddWithValue("@PriceTotal", order.PriceTotal);
+                    cmd.Parameters.AddWithValue("@PickupDate", order.PickupDate);
+                    cmd.Parameters.AddWithValue("@ReturnDate", order.ReturnDate);
+                    cmd.Parameters.AddWithValue("@Status", order.Status);
+                    cmd.Parameters.AddWithValue("@UpdatedAt", order.UpdatedAt);
+
+                    conn.Open();
+                    return await cmd.ExecuteNonQueryAsync();
+                }
             }
             catch (Exception)
             {

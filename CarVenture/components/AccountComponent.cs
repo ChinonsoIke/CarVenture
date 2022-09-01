@@ -3,6 +3,7 @@ using CarVenture.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
 
 namespace CarVenture.components
 {
@@ -20,7 +21,7 @@ namespace CarVenture.components
         {
             var dashboardModel = new DashboardModel();
             
-            dashboardModel.User = _userService.Get(_session.GetString("UserID"));
+            dashboardModel.User = _userService.GetAsync(_session.GetString("UserID")).Result;
             return View(dashboardModel);
         }
     }

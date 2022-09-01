@@ -37,9 +37,16 @@ namespace CarVenture.Core.Services
             }
 
             try
-            {
-                await _repository.AddAsync(car);
-                _logger.LogInformation($"Successfully added car {car.Id} to database");
+            {   
+                if(await _repository.AddAsync(car) > 0)
+                {
+                    _logger.LogInformation($"Successfully added car {car.Id} to database");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not add car {car.Id} to database: zero rows affected");
+                    throw new Exception($"Could not add car {car.Id} to database: zero rows affected");
+                }
             }
             catch (Exception ex)
             {
@@ -52,8 +59,15 @@ namespace CarVenture.Core.Services
         {
             try
             {
-                await _repository.DeleteAsync(id);
-                _logger.LogInformation($"Deleted car {id} from database");
+                if (await _repository.DeleteAsync(id) > 0)
+                {
+                    _logger.LogInformation($"Deleted car {id} from database");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not delete car {id} from database: zero rows affected");
+                    throw new Exception($"Could not delete car {id} from database: zero rows affected");
+                }
             }
             catch (Exception ex)
             {
@@ -62,33 +76,34 @@ namespace CarVenture.Core.Services
             }
         }
 
-        public CarResponseDto Get(string id)
+        public async Task<CarResponseDto> GetAsync(string id)
         {
-            var car = _repository.Get(id);
+            var car = await _repository.GetAsync(id);
             var carResponseDto = _mapper.Map<CarResponseDto>(car);
-            carResponseDto.Location = _locationService.Get(carResponseDto.LocationId);
+            carResponseDto.Location = await _locationService.GetAsync(carResponseDto.LocationId);
             return carResponseDto;
         }
 
-        public List<CarResponseDto> GetAll()
+        public async Task<List<CarResponseDto>> GetAllAsync()
         {
-            var cars = _repository.GetAll();
+            var cars = await _repository.GetAllAsync();
             var carResponseDtos = _mapper.Map<List<CarResponseDto>>(cars);
             foreach(var carResponseDto in carResponseDtos)
             {
-                carResponseDto.Location = _locationService.Get(carResponseDto.LocationId);
+                carResponseDto.Location = await _locationService.GetAsync(carResponseDto.LocationId);
             }
 
             return carResponseDtos;
         }
 
-        public List<CarResponseDto> GetAll(string locationId)
+        public async Task<List<CarResponseDto>> GetAllAsync(string locationId)
         {
-            var cars = _repository.GetAll().Where(c => c.LocationId == locationId);
+            var allCars = await _repository.GetAllAsync();
+            var cars = allCars.Where(c => c.LocationId == locationId);
             var carResponseDtos = _mapper.Map<List<CarResponseDto>>(cars);
             foreach (var carResponseDto in carResponseDtos)
             {
-                carResponseDto.Location = _locationService.Get(carResponseDto.LocationId);
+                carResponseDto.Location = await _locationService.GetAsync(carResponseDto.LocationId);
             }
 
             return carResponseDtos;
@@ -96,7 +111,7 @@ namespace CarVenture.Core.Services
 
         public async Task UpdateAsync(string id, CarRequestDto carRequestDto)
         {
-            var car = _repository.Get(id);
+            var car = await _repository.GetAsync(id);
             car.Name = carRequestDto.Name;
             car.RentPrice = carRequestDto.RentPrice;
             car.Features = carRequestDto.Features;
@@ -106,8 +121,15 @@ namespace CarVenture.Core.Services
 
             try
             {
-                await _repository.UpdateAsync(car);
-                _logger.LogInformation($"Updated car {id} information successfully");
+                if (await _repository.UpdateAsync(car) > 0)
+                {
+                    _logger.LogInformation($"Updated car {id} information successfully");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not update car {id} information: zero rows affected");
+                    throw new Exception($"Could not update car {id} information: zero rows affected");
+                }
             }
             catch (Exception ex)
             {

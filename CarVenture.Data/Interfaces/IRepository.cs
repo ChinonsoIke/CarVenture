@@ -16,33 +16,33 @@ namespace CarVenture.Data.Interfaces
         /// </summary>
         /// <param name="item">Object of type T to be added to database</param>
         /// <returns></returns>
-        public Task AddAsync(T item);
+        public Task<int> AddAsync(T item);
 
         /// <summary>
         /// Retrieves an object of type T from the database
         /// </summary>
         /// <param name="id">ID of the object to be retrieved from the database</param>
         /// <returns></returns>
-        public T Get(string id);
+        public Task<T> GetAsync(string id);
 
         /// <summary>
         /// Retrieves all objects of type T from the database
         /// </summary>
         /// <returns>A list of all objects of type T in the database</returns>
-        public List<T> GetAll();
+        public Task<List<T>> GetAllAsync();
 
         /// <summary>
         /// Updates the value of an object of type T in the database
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public Task UpdateAsync(T item);
+        public Task<int> UpdateAsync(T item);
 
         /// <summary>
         /// Deletes an object of type T from the database
         /// </summary>
         /// <param name="id">ID of the object to be deleted from the database</param>
         /// <returns></returns>
-        public Task DeleteAsync(string id);
+        public Task<int> DeleteAsync(string id);
     }
 }

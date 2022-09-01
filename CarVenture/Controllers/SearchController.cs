@@ -1,6 +1,7 @@
 ﻿using CarVenture.Core.Interfaces;
 using CarVenture.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
 {
@@ -15,11 +16,11 @@ namespace CarVenture.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult LocationSearch(SearchModel searchModel)
+        public async Task<IActionResult> LocationSearch(SearchModel searchModel)
         {
             if (ModelState.IsValid)
             {
-                var cars = _carService.GetAll(searchModel.LocationId);
+                var cars = await _carService.GetAllAsync(searchModel.LocationId);
                 return View(cars);
             }
 

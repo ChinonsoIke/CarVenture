@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarVenture.Core", "CarVentu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarVenture.Dtos", "CarVenture.Dtos\CarVenture.Dtos.csproj", "{AC43CD6C-81D9-4949-AD62-61D88B7E36CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarVenture.Helpers", "CarVenture.Helpers\CarVenture.Helpers.csproj", "{DFB980C3-C979-410D-83AD-8870F969C087}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{AC43CD6C-81D9-4949-AD62-61D88B7E36CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC43CD6C-81D9-4949-AD62-61D88B7E36CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC43CD6C-81D9-4949-AD62-61D88B7E36CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFB980C3-C979-410D-83AD-8870F969C087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFB980C3-C979-410D-83AD-8870F969C087}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFB980C3-C979-410D-83AD-8870F969C087}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFB980C3-C979-410D-83AD-8870F969C087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -36,7 +36,8 @@
                     <h3>@car.Name</h3>
                     <div class="card-list">
                         @{
-                            foreach(var feature in car.Features)
+                            var features = car.Features.Split(',');
+                            foreach(var feature in features)
                             {
                                 <div class="list-group-custom">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

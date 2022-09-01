@@ -21,14 +21,14 @@ namespace CarVenture.Core.Interfaces
         /// </summary>
         /// <param name="id">ID of the object to be retrieved from the database</param>
         /// <returns>A data transfer object representing the domain entity</returns>
-        public TResponseDto Get(string id);
+        public Task<TResponseDto> GetAsync(string id);
 
         /// <summary>
         /// Retrieves all objects match TResponseDto from the database and 
         /// converts them to type TResponseDto
         /// </summary>
         /// <returns>A list of objects of type TResponseDto</returns>
-        public List<TResponseDto> GetAll();
+        public Task<List<TResponseDto>> GetAllAsync();
 
         /// <summary>
         /// Converts a data transfer object of type TRequestDto

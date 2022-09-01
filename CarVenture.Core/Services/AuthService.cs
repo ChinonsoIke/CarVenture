@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CarVenture.Core.Services
 {
@@ -21,9 +22,9 @@ namespace CarVenture.Core.Services
             _logger = logger;
         }
 
-        public bool Login(string email, string password)
+        public async Task<bool> Login(string email, string password)
         {
-            var user = _userRepository.Get(email);
+            var user = await _userRepository.GetAsync(email);
 
             if(user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarVenture.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -13,5 +14,6 @@ namespace CarVenture.Dtos
         public DateTime PickupDate { get; set; }
         [Required]
         public DateTime ReturnDate { get; set; }
+        public OrderStatus Status { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using CarVenture.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
 {
@@ -21,23 +22,23 @@ namespace CarVenture.Controllers
             _session = httpContextAccessor.HttpContext.Session;
         }
 
-        public IActionResult Index(string id)
+        public async Task<IActionResult> Index(string id)
         {
             if (_session.GetString("UserID") == null) return RedirectToAction("Login", "Auth");
 
             var orderModel = new OrderSummaryModel();
-            orderModel.Car = _carService.Get(id);
+            orderModel.Car = await _carService.GetAsync(id);
             return View(orderModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Order(OrderSummaryModel orderModel)
+        public async Task<IActionResult> Order(OrderSummaryModel orderModel)
         {
             if (ModelState.IsValid)
             {
-                orderModel.Car = _carService.Get(orderModel.OrderRequestDto.CarId);
-                orderModel.User = _userService.Get(_session.GetString("UserID"));
+                orderModel.Car = await _carService.GetAsync(orderModel.OrderRequestDto.CarId);
+                orderModel.User = await _userService.GetAsync(_session.GetString("UserID"));
                 orderModel.OrderRequestDto.PriceTotal = (orderModel.OrderRequestDto.ReturnDate - orderModel.OrderRequestDto.PickupDate).Days * orderModel.Car.RentPrice;
                 //return RedirectToAction("OrderSummary");
                 return View(orderModel);
@@ -46,30 +47,14 @@ namespace CarVenture.Controllers
             return RedirectToAction("Index");
         }
 
-        //public IActionResult OrderSummary(OrderSummaryModel orderModel)
-        //{
-        //    if (_session.GetString("UserID") == null) return RedirectToAction("Login", "Auth");
-
-        //    return View(orderModel);
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult OrderConfirmation(OrderSummaryModel orderModel)
+        public async Task<IActionResult> OrderConfirmation(OrderSummaryModel orderModel)
         {
-            _orderService.AddAsync(orderModel.OrderRequestDto);
-            var orderId = _orderService.GetAllUserOrders(_session.GetString("UserID")).Last().Id;
+            await _orderService.AddAsync(orderModel.OrderRequestDto);
+            var orderId = (await _orderService.GetAllUserOrdersAsync(_session.GetString("UserID"))).Last().Id;
             orderModel.OrderId = orderId;
             return View(orderModel);
         }
-
-        //public IActionResult OrderConfirmation()
-        //{
-        //    if (_session.GetString("UserID") == null) return RedirectToAction("Login", "Auth");
-
-        //    var orderId = _orderService.GetAllUserOrders(_session.GetString("UserID")).Last().Id;
-
-        //    return View(orderId);
-        //}
     }
 }

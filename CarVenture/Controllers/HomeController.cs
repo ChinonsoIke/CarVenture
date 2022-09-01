@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -13,32 +14,28 @@ namespace CarVenture.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IAppService _appService;
         private readonly ICarService _carService;
+        private readonly ILocationService _locationService;
+        private readonly IPostService _postService;
 
-        public HomeController(ILogger<HomeController> logger, IAppService appService, ICarService carService)
+        public HomeController(ILogger<HomeController> logger, ICarService carService, ILocationService locationService, IPostService postService)
         {
             _logger = logger;
-            _appService = appService;
             _carService = carService;
+            _locationService = locationService;
+            _postService = postService;
         }
 
         public async Task<IActionResult> Index()
-        {
-            if (!_appService.DBLoaded)
+        {            
+            var data = new HomeViewModel()
             {
-                await _appService.LoadDB();
-            }
-            
-            var model = new HomeViewModel()
-            {
-                // switch to services, repos, DTOs next week
-                Locations = DataStore.Locations,
-                Cars = _carService.GetAll(),
-                Posts = DataStore.Posts,
+                Cars = await _carService.GetAllAsync(),
+                Locations = await _locationService.GetAllAsync(),
+                Posts = await _postService.GetAllAsync(),
             };
 
-            return View(model);
+            return View(data);
         }
 
         public IActionResult Privacy()

@@ -36,8 +36,15 @@ namespace CarVenture.Core.Services
 
             try
             {
-                await _repository.AddAsync(location);
-                _logger.LogInformation($"Successfully added location {location.Id} to database");
+                if (await _repository.AddAsync(location) > 0)
+                {
+                    _logger.LogInformation($"Successfully added location {location.Id} to database");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not add location {location.Id} to database: zero rows affected");
+                    throw new Exception($"Could not add location {location.Id} to database: zero rows affected");
+                }
             }
             catch (Exception ex)
             {
@@ -50,8 +57,15 @@ namespace CarVenture.Core.Services
         {
             try
             {
-                await _repository.DeleteAsync(id);
-                _logger.LogInformation($"Deleted location {id} from database");
+                if (await _repository.DeleteAsync(id) > 0)
+                {
+                    _logger.LogInformation($"Deleted location {id} from database");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not delete location {id} from database: zero rows affected");
+                    throw new Exception($"Could not delete location {id} from database: zero rows affected");
+                }
             }
             catch (Exception ex)
             {
@@ -60,28 +74,36 @@ namespace CarVenture.Core.Services
             }
         }
 
-        public LocationResponseDto Get(string id)
+        public async Task<LocationResponseDto> GetAsync(string id)
         {
-            var location = _repository.Get(id);
+            var location = await _repository.GetAsync(id);
             return _mapper.Map<LocationResponseDto>(location);
         }
 
-        public List<LocationResponseDto> GetAll()
+        public async Task<List<LocationResponseDto>> GetAllAsync()
         {
-            var location = _repository.GetAll();
-            return _mapper.Map<List<LocationResponseDto>>(location);
+            var locations = await _repository.GetAllAsync();
+            return _mapper.Map<List<LocationResponseDto>>(locations);
         }
 
         public async Task UpdateAsync(string id, LocationRequestDto locationRequestDto)
         {
-            var location = _repository.Get(id);
+            var location = await _repository.GetAsync(id);
             location.Name = locationRequestDto.Name;
             location.Address = locationRequestDto.Address;
+            location.UpdatedAt = DateTime.Now;
 
             try
             {
-                await _repository.UpdateAsync(location);
-                _logger.LogInformation($"Updated location {id} information successfully");
+                if (await _repository.UpdateAsync(location) > 0)
+                {
+                    _logger.LogInformation($"Updated location {id} information successfully");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not update location {id} information: zero rows affected");
+                    throw new Exception($"Could not update location {id} information: zero rows affected");
+                }
             }
             catch (Exception ex)
             {

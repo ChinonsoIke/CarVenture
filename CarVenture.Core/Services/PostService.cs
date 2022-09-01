@@ -36,8 +36,15 @@ namespace CarVenture.Core.Services
 
             try
             {
-                await _repository.AddAsync(post);
-                _logger.LogInformation($"Successfully added car {post.Id} to database");
+                if (await _repository.AddAsync(post) > 0)
+                {
+                    _logger.LogInformation($"Successfully added post {post.Id} to database");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not add post {post.Id} to database: zero rows affected");
+                    throw new Exception($"Could not add post {post.Id} to database: zero rows affected");
+                }
             }
             catch (Exception ex)
             {
@@ -50,8 +57,15 @@ namespace CarVenture.Core.Services
         {
             try
             {
-                await _repository.DeleteAsync(id);
-                _logger.LogInformation($"Deleted post {id} from database");
+                if (await _repository.DeleteAsync(id) > 0)
+                {
+                    _logger.LogInformation($"Deleted post {id} from database");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not delete post {id} from database: zero rows affected");
+                    throw new Exception($"Could not delete post {id} from database: zero rows affected");
+                }
             }
             catch (Exception ex)
             {
@@ -60,21 +74,21 @@ namespace CarVenture.Core.Services
             }
         }
 
-        public PostResponseDto Get(string id)
+        public async Task<PostResponseDto> GetAsync(string id)
         {
-            var post = _repository.Get(id);
+            var post = await _repository.GetAsync(id);
             return _mapper.Map<PostResponseDto>(post);
         }
 
-        public List<PostResponseDto> GetAll()
+        public async Task<List<PostResponseDto>> GetAllAsync()
         {
-            var posts = _repository.GetAll();
+            var posts = await _repository.GetAllAsync();
             return _mapper.Map<List<PostResponseDto>>(posts);
         }
 
         public async Task UpdateAsync(string id, PostRequestDto postRequestDto)
         {
-            var post = _repository.Get(id);
+            var post = await _repository.GetAsync(id);
             post.Title = postRequestDto.Title;
             post.Body = postRequestDto.Body;
             post.FeatureImagePath = postRequestDto.FeatureImagePath;
@@ -82,8 +96,15 @@ namespace CarVenture.Core.Services
 
             try
             {
-                await _repository.UpdateAsync(post);
-                _logger.LogInformation($"Updated post {id} information successfully");
+                if (await _repository.UpdateAsync(post) > 0)
+                {
+                    _logger.LogInformation($"Updated post {id} information successfully");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not update post {id} information: zero rows affected");
+                    throw new Exception($"Could not update post {id} information: zero rows affected");
+                }
             }
             catch (Exception ex)
             {

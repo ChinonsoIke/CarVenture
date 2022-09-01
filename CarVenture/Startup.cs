@@ -45,7 +45,6 @@ namespace CarVenture
             services.AddAutoMapper(typeof(LocationProfile));
             services.AddAutoMapper(typeof(CarProfile));
 
-            services.AddSingleton<IAppService, AppService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();

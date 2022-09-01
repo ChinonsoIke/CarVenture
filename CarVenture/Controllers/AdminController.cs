@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
 {
@@ -26,66 +27,66 @@ namespace CarVenture.Controllers
             _userService = userService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (_session.GetString("UserID") == null) return RedirectToAction("Login", "Auth");
-            if (!_userService.Get(_session.GetString("UserID")).IsAdmin) return NotFound();
+            if (!(await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin) return NotFound();
 
             var stats = new Dictionary<string, int>
             {
-                {"totalOrders", _orderService.GetAll().Count() },
-                {"completedOrders", _orderService.GetAll().Where(o => o.Status == Models.Enums.OrderStatus.Completed).Count() },
-                {"totalCars", _carService.GetAll().Count() },
-                {"totalLocations", _locationService.GetAll().Count() },
-                {"totalPosts", _postService.GetAll().Count() },
-                {"totalUsers", _userService.GetAll().Count() },
+                {"totalOrders", (await _orderService.GetAllAsync()).Count() },
+                {"completedOrders", (await _orderService.GetAllAsync()).Where(o => o.Status == Models.Enums.OrderStatus.Completed).Count() },
+                {"totalCars", (await _carService.GetAllAsync()).Count() },
+                {"totalLocations", (await _locationService.GetAllAsync()).Count() },
+                {"totalPosts", (await _postService.GetAllAsync()).Count() },
+                {"totalUsers", (await _userService.GetAllAsync()).Count() },
             };
 
             return View(stats);
         }
 
-        public IActionResult Cars()
+        public async Task<IActionResult> Cars()
         {
-            if (_session.GetString("UserID") == null || !_userService.Get(_session.GetString("UserID")).IsAdmin)
+            if (_session.GetString("UserID") == null || ! (await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin)
                 return RedirectToAction("Login", "Auth");
 
-            var cars = _carService.GetAll();
+            var cars = await _carService.GetAllAsync();
             return View(cars);
         }
 
-        public IActionResult Locations()
+        public async Task<IActionResult> Locations()
         {
-            if (_session.GetString("UserID") == null || !_userService.Get(_session.GetString("UserID")).IsAdmin)
+            if (_session.GetString("UserID") == null || !(await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin)
                 return RedirectToAction("Login", "Auth");
 
-            var locations = _locationService.GetAll();
+            var locations = await _locationService.GetAllAsync();
             return View(locations);
         }
 
-        public IActionResult Orders()
+        public async Task<IActionResult> Orders()
         {
-            if (_session.GetString("UserID") == null || !_userService.Get(_session.GetString("UserID")).IsAdmin)
+            if (_session.GetString("UserID") == null || !(await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin)
                 return RedirectToAction("Login", "Auth");
 
-            var orders = _orderService.GetAll();
+            var orders = _orderService.GetAllAsync();
             return View(orders);
         }
 
-        public IActionResult Posts()
+        public async Task<IActionResult> Posts()
         {
-            if (_session.GetString("UserID") == null || !_userService.Get(_session.GetString("UserID")).IsAdmin)
+            if (_session.GetString("UserID") == null || !(await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin)
                 return RedirectToAction("Login", "Auth");
 
-            var posts = _postService.GetAll();
+            var posts = _postService.GetAllAsync();
             return View(posts);
         }
 
-        public IActionResult Users()
+        public async Task<IActionResult> Users()
         {
-            if (_session.GetString("UserID") == null || !_userService.Get(_session.GetString("UserID")).IsAdmin)
+            if (_session.GetString("UserID") == null || !(await _userService.GetAsync(_session.GetString("UserID"))).IsAdmin)
                 return RedirectToAction("Login", "Auth");
 
-            var users = _userService.GetAll();
+            var users = _userService.GetAllAsync();
             return View(users);
         }
     }

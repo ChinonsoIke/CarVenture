@@ -24,10 +24,9 @@ namespace CarVenture.Helpers
                 string json = JsonConvert.SerializeObject(obj) + Environment.NewLine;
                 await File.WriteAllTextAsync(path, json);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw new Exception("Cannot write to database");
+                throw new Exception($"Cannot write to database: {ex.Message}");
             }
         }
 

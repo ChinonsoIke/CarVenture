@@ -39,8 +39,15 @@ namespace CarVenture.Core.Services
 
             try
             {
-                await _repository.AddAsync(order);
-                _logger.LogInformation($"Successfully added order {order.Id} to database");
+                if (await _repository.AddAsync(order) > 0)
+                {
+                    _logger.LogInformation($"Successfully added order {order.Id} to database");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not add order {order.Id} to database: zero rows affected");
+                    throw new Exception($"Could not add order {order.Id} to database: zero rows affected");
+                }
             }
             catch (Exception ex)
             {
@@ -53,8 +60,15 @@ namespace CarVenture.Core.Services
         {
             try
             {
-                await _repository.DeleteAsync(id);
-                _logger.LogInformation($"Deleted order {id} from database");
+                if (await _repository.DeleteAsync(id) > 0)
+                {
+                    _logger.LogInformation($"Deleted order {id} from database");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not delete order {id} from database: zero rows affected");
+                    throw new Exception($"Could not delete order {id} from database: zero rows affected");
+                }
             }
             catch (Exception ex)
             {
@@ -63,25 +77,26 @@ namespace CarVenture.Core.Services
             }
         }
 
-        public OrderResponseDto Get(string id)
+        public async Task<OrderResponseDto> GetAsync(string id)
         {
-            var order = _repository.Get(id);
+            var order = await _repository.GetAsync(id);
             return _mapper.Map<OrderResponseDto>(order);
         }
 
-        public List<OrderResponseDto> GetAll()
+        public async Task<List<OrderResponseDto>> GetAllAsync()
         {
-            var orders = _repository.GetAll();
+            var orders = await _repository.GetAllAsync();
             return _mapper.Map<List<OrderResponseDto>>(orders);
         }
 
-        public List<OrderResponseDto> GetAllUserOrders(string id)
+        public async Task<List<OrderResponseDto>> GetAllUserOrdersAsync(string id)
         {
-            var orders = _repository.GetAll().Where(o => o.UserId == id);            
+            var allOrders = await _repository.GetAllAsync();
+            var orders = allOrders.Where(o => o.UserId == id);
             var orderResonseDtos = _mapper.Map<List<OrderResponseDto>>(orders);
             foreach(var order in orderResonseDtos)
             {
-                order.Car = _carService.Get(order.CarId);
+                order.Car =await _carService.GetAsync(order.CarId);
             }
 
             return orderResonseDtos;
@@ -89,13 +104,26 @@ namespace CarVenture.Core.Services
 
         public async Task UpdateAsync(string id, OrderRequestDto orderRequestDto)
         {
-            var order = _repository.Get(id);
+            var order = await _repository.GetAsync(id);
             order.CarId = orderRequestDto.CarId;
+            order.UserId = orderRequestDto.UserId;
+            order.PickupDate = orderRequestDto.PickupDate;
+            order.ReturnDate = orderRequestDto.ReturnDate;
+            order.PriceTotal = orderRequestDto.PriceTotal;
+            order.Status = orderRequestDto.Status;
+            order.UpdatedAt = DateTime.Now;
 
             try
             {
-                await _repository.UpdateAsync(order);
-                _logger.LogInformation($"Updated order {id} information successfully");
+                if (await _repository.UpdateAsync(order) > 0)
+                {
+                    _logger.LogInformation($"Updated order {id} information successfully");
+                }
+                else
+                {
+                    _logger.LogInformation($"Could not update order {id} information: zero rows affected");
+                    throw new Exception($"Could not update order {id} information: zero rows affected");
+                }
             }
             catch (Exception ex)
             {

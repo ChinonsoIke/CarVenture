@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CarVenture.Core.Interfaces
 {
@@ -12,6 +13,6 @@ namespace CarVenture.Core.Interfaces
         /// </summary>
         /// <param name="id">string user ID</param>
         /// <returns>A list of OrderResponseDto objects</returns>
-        public List<OrderResponseDto> GetAllUserOrders(string id);
+        public Task<List<OrderResponseDto>> GetAllUserOrdersAsync(string id);
     }
 }

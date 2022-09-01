@@ -2,6 +2,7 @@
 using CarVenture.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
 {
@@ -16,21 +17,21 @@ namespace CarVenture.Controllers
             _session = httpContextAccessor.HttpContext.Session;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (_session.GetString("UserID") == null) return RedirectToAction("Login", "Auth");
 
             var userId = _session.GetString("UserID");
-            var orders = _orderService.GetAllUserOrders(userId);
+            var orders = await _orderService.GetAllUserOrdersAsync(userId);
             return View(orders);
         }
 
-        public IActionResult OrderHistory()
+        public async Task<IActionResult> OrderHistory()
         {
             if (_session.GetString("UserID") == null) return RedirectToAction("Login", "Auth");
 
             var userId = _session.GetString("UserID");
-            var orders = _orderService.GetAllUserOrders(userId);
+            var orders = await _orderService.GetAllUserOrdersAsync(userId);
             return View(orders);
         }
     }

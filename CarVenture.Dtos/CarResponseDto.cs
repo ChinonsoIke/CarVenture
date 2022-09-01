@@ -12,7 +12,7 @@ namespace CarVenture.Dtos
         public string Name { get; set; }
         [Display(Name = "Rent Price")]
         public decimal RentPrice { get; set; }
-        public string[] Features { get; set; }
+        public string Features { get; set; }
         public string ImagePath { get; set; }
         public string LocationId { get; set; }
         public LocationResponseDto Location { get; set; }

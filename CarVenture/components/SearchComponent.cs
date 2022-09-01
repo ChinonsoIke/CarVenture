@@ -2,6 +2,7 @@
 using CarVenture.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
 
 namespace CarVenture.components
 {
@@ -16,7 +17,7 @@ namespace CarVenture.components
         public IViewComponentResult Invoke()
         {
             var searchModel = new SearchModel();
-            var locations = _locationService.GetAll();
+            var locations = _locationService.GetAllAsync().Result;
             foreach (var location in locations)
             {
                 searchModel.Locations.Add(new SelectListItem { Value = location.Id, Text = location.Name });

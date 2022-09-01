@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
 {
@@ -13,15 +14,15 @@ namespace CarVenture.Controllers
         {
             _carService = carService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var cars = _carService.GetAll();
+            var cars = await _carService.GetAllAsync();
             return View(cars);
         }
 
-        public IActionResult Show(string id)
+        public async Task<IActionResult> Show(string id)
         {
-            var carResponseDto = _carService.Get(id);
+            var carResponseDto = await _carService.GetAsync(id);
             return View(carResponseDto);
         }
     }
