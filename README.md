@@ -7,3 +7,6 @@
 
 ## Database
 You can find the database script in the root folder of this repository, named carventure.sql.
+
+## Appsettings
+The appsettings.json file contains properties Logging, AllowHosts and ConfigurationStrings.
