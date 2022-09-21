@@ -93,6 +93,7 @@ namespace CarVenture.Core.Services
             post.Body = postRequestDto.Body;
             post.FeatureImagePath = postRequestDto.FeatureImagePath;
             post.Tag = postRequestDto.Tag;
+            post.UpdatedAt = DateTime.Now;
 
             try
             {

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
@@ -18,7 +19,7 @@ namespace CarVenture.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var cars = await _carService.GetAllAsync();
+            var cars = (await _carService.GetAllAsync()).Where(c => c.Status == Models.Enums.Status.Available).ToList();
             return View(cars);
         }
 

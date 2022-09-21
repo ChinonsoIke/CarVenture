@@ -33,7 +33,7 @@ namespace CarVenture.Controllers
         {            
             var data = new HomeViewModel()
             {
-                Cars = (await _carService.GetAllAsync()).Where(c => c.IsFeatured).Take(3).ToList(),
+                Cars = (await _carService.GetAllAsync()).Where(c => c.IsFeatured).Where(c => c.Status == Models.Enums.Status.Available).Take(3).ToList(),
                 Locations = await _locationService.GetAllAsync(),
                 Posts = await _postService.GetAllAsync(),
             };

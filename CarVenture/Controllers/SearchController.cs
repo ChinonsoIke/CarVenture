@@ -2,6 +2,7 @@
 using CarVenture.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CarVenture.Controllers
@@ -22,7 +23,7 @@ namespace CarVenture.Controllers
         {
             if (ModelState.IsValid)
             {
-                var cars = await _carService.GetAllAsync(searchModel.LocationId);
+                var cars = (await _carService.GetAllAsync(searchModel.LocationId)).Where(c => c.Status == Models.Enums.Status.Available).ToList();
                 return View(cars);
             }
 

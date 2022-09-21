@@ -117,7 +117,8 @@ namespace CarVenture.Core.Services
             car.Features = carRequestDto.Features;
             car.Status = carRequestDto.Status;
             car.LocationId = carRequestDto.LocationId;
-            car.ImagePath = carRequestDto.ImagePath;            
+            car.ImagePath = carRequestDto.ImagePath;
+            car.UpdatedAt = DateTime.Now;
 
             try
             {

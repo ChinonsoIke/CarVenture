@@ -96,6 +96,7 @@ namespace CarVenture.Core.Services
             user.Email = userRequestDto.Email;
             user.Password = BCrypt.Net.BCrypt.HashPassword(userRequestDto.Password);
             user.PhoneNumber = userRequestDto.PhoneNumber;
+            user.UpdatedAt = DateTime.Now;
 
             try
             {
